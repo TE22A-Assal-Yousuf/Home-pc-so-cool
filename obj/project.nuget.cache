@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Zq7QuxgnIP3Ivhq+IqtgJp+2w/nJ+2e9rDFHooGCgQj5ATu5DeWphEcSUo7s/zOxXvqV5FHWM1ufi6n3t5N7Vw==",
+  "success": true,
+  "projectFilePath": "c:\\Users\\yoyoa\\OneDrive\\Documents\\Slutprojekt-Testing-lists\\Slutprojekt-Testing-lists\\Slutprojekt\\Slutprojekt.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\yoyoa\\.nuget\\packages\\raylib-cs\\6.0.0\\raylib-cs.6.0.0.nupkg.sha512",
+    "C:\\Users\\yoyoa\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}

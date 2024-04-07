@@ -76,6 +76,9 @@ while (!Raylib.WindowShouldClose())
 
         rewards1.Upgradebuttons();
         rewards.BuffsAdd();
+
+        rewards.Shoplogic();
+
         
         //graphics
 
@@ -84,6 +87,8 @@ while (!Raylib.WindowShouldClose())
         rewards.start();
         store.Drawstorebutton();
         ui.DrawLines();
+
+
 
 
         //Store
@@ -106,7 +111,7 @@ while (!Raylib.WindowShouldClose())
         store.postitionDraw();
 
         
-
+        rewards.Shoplogic();
         rewards.DrawCharacters();
 
         store1.Button();

@@ -41,3 +41,4 @@ c:\Users\yoyoa\OneDrive\Documents\Slutprojekt-Testing-lists\Slutprojekt-Testing-
 c:\Users\yoyoa\OneDrive\Documents\Slutprojekt-Testing-lists\Slutprojekt-Testing-lists\Slutprojekt\obj\Debug\net8.0\Slutprojekt.pdb
 c:\Users\yoyoa\OneDrive\Documents\Slutprojekt-Testing-lists\Slutprojekt-Testing-lists\Slutprojekt\obj\Debug\net8.0\Slutprojekt.genruntimeconfig.cache
 c:\Users\yoyoa\OneDrive\Documents\Slutprojekt-Testing-lists\Slutprojekt-Testing-lists\Slutprojekt\obj\Debug\net8.0\ref\Slutprojekt.dll
+c:\Users\yoyoa\OneDrive\Documents\Slutprojekt-Testing-lists\Slutprojekt-Testing-lists\Slutprojekt\obj\Debug\net8.0\Slutprojekt.sourcelink.json

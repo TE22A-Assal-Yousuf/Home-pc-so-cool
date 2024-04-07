@@ -65,20 +65,15 @@ class Rewards
 
     public static List<Upgrades> UpgradesList = new List<Upgrades>();
 
-    public int strawHatPrice = 20;
-    public int strawHatTextSize = 20;
+    public static int strawHatPrice = 20;
+    public static int strawHatTextSize = 20;
+
+    public static Upgrades StrawHat = new Upgrades("Straw Hat", 0, strawHatPrice, 1, Upgrades.Upgr1button);
+    public static Upgrades Zanpakuto = new Upgrades("Zanpakuto", 0, 100, 5, Upgrades.Upgr2button);
+    public static Upgrades DeathNote = new Upgrades("Death Note", 0, 1000, 20, Upgrades.Upgr3button);
 
     public void start()
     {
-
-        
-
-
-
-
-        Upgrades StrawHat = new Upgrades("Straw Hat", 0, strawHatPrice, 1, Upgrades.Upgr1button);
-        Upgrades Zanpakuto = new Upgrades("Zanpakuto", 0, 100, 5, Upgrades.Upgr2button);
-        Upgrades DeathNote = new Upgrades("Death Note", 0, 1000, 20, Upgrades.Upgr3button);
 
         UpgradesList.Add(StrawHat);
         UpgradesList.Add(Zanpakuto);
@@ -185,7 +180,7 @@ class Rewards
             }
         }
 
-        
+
 
         if (Damage.points >= 1000)
         {
@@ -195,7 +190,7 @@ class Rewards
 
 
     }
-    
+
     //------------------------------------//------------------------------------//------------------------------------//------------------------------------//------------------------------------
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //   °˖ ✧◝(○ ヮ ○)◜✧˖ °       POWERUPS // BUFFS!!!                                                                                                                                                         
@@ -220,40 +215,200 @@ class Rewards
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //------------------------------------//------------------------------------//------------------------------------//------------------------------------//------------------------------------
     public static List<Characters> CharactersList = new List<Characters>();
+    public static Vector2 CurrentPos = new Vector2(0, 0);
+    public static int positionNum;
+
+    Random rnd = new Random();
+
+
+
+
 
 
     public void DrawCharacters()
     {
-        Characters Ayanokoji = new Characters("Ayanokoji", 2, 300, 1, 65, BuffList[0], Characters.AyanokojiRect, Characters.AyanokojiTexture);
-        Characters Toji = new Characters("Toji", 3, 500, 1, 30, BuffList[0], Characters.TojiRect, Characters.TojiTexture);
-        Characters Madara = new Characters("Madara", 3, 500, 1, 65, BuffList[0], Characters.AyanokojiRect, Characters.AyanokojiTexture);
-        Characters Saitama = new Characters("Saitama", 3, 500, 1, 65, BuffList[0], Characters.AyanokojiRect, Characters.AyanokojiTexture);
+
+
+
+        //=============================================================================================================================================================================
+        // (ง •̀_•́)ง ||          AYANOKOJI       
+        //=============================================================================================================================================================================
+
+        Characters Ayanokoji = new Characters("Ayanokoji", 2, 300, 1, 65, 0,BuffList[0], Characters.AyanokojiRect, Characters.AyanokojiTexture, true);
 
         CharactersList.Add(Ayanokoji);
+
+        if (Ayanokoji.InRotation == true)
+        {
+
+            CharactersInShop.Add(Ayanokoji);
+
+        }
+
+
+
+
+        //=============================================================================================================================================================================
+        // (ง •̀_•́)ง ||          TOJI       
+        //=============================================================================================================================================================================
+
+        Characters Toji = new Characters("Toji", 3, 500, 1, 30, 0, BuffList[0], Characters.TojiRect, Characters.TojiTexture, false);
+
+
         CharactersList.Add(Toji);
+
+
+        //=============================================================================================================================================================================
+        // (ง •̀_•́)ง ||          MADARA       
+        //=============================================================================================================================================================================
+
+
+        Characters Madara = new Characters("Madara", 3, 500, 1, 65, 0, BuffList[0], Characters.AyanokojiRect, Characters.AyanokojiTexture, false);
         CharactersList.Add(Madara);
+
+
+        //=============================================================================================================================================================================
+        // (ง •̀_•́)ง ||          SAITAMA       
+        //=============================================================================================================================================================================
+
+
+        Characters Saitama = new Characters("Saitama", 6, 500, 1, 65, 0, BuffList[0], Characters.AyanokojiRect, Characters.AyanokojiTexture, false);
+
+
         CharactersList.Add(Saitama);
 
 
+        //=============================================================================================================================================================================
+        // (ง •̀_•́)ง ||          Toji       
+        //=============================================================================================================================================================================
+
+
+
+        //----------
+        // MADARA
+        //----------
+
+        //Raylib.DrawRectangleRec(Characters.Madara, Color.Red);
+        //Raylib.DrawRectangleRec(Characters.Saitama, Color.Yellow);
+
         //--
 
-        Raylib.DrawRectangleRec(Characters.Madara, Color.Red);
-        Raylib.DrawRectangleRec(Characters.Saitama, Color.Yellow);
-
-        //--
-
+        //----------
         // Ayanokoji
-
-        Raylib.DrawRectangleRec(CharactersList[0].Rectangle,Color.Brown);
+        //----------
+        Raylib.DrawRectangleRec(Ayanokoji.Rectangle, Color.Brown);
         //Raylib.DrawTexture(CharactersList[0].Texture, (int)CharactersList[0].Rectangle.X, (int)CharactersList[0].Rectangle.Y, Color.White);
 
-        // Tjoi
-
-        Raylib.DrawRectangleRec(CharactersList[1].Rectangle, Color.Black);
+        //----------
+        // TOJI
+        //----------
+        //Raylib.DrawRectangleRec(Toji.Rectangle, Color.Gray);
         //Raylib.DrawTexture(CharactersList[1].Texture, (int)CharactersList[1].Rectangle.X, (int)CharactersList[1].Rectangle.Y, Color.White);
     }
 
+
+    List<Characters> CharactersInShop = new List<Characters>(7);
+
+    public static double ShopResetTimer = 10;
+    public static double ShopTimerTick;
     
+    public void Shoplogic()
+    {
+
+        ShopResetTimer -= Raylib.GetFrameTime();
+
+        
+    
+        if (ShopResetTimer <= 0)
+        {
+
+            CharactersInShop[0].Rectangle = new Rectangle (78, 128, 250, 250);
+            ShopResetTimer = 10;
+
+
+            if (CharactersInShop[0].Stars <= 3)
+            {
+
+
+
+                for (int j = 0; j < 1; j += 1)
+                {
+                    CharactersInShop[0].PositionNum = rnd.Next(0, 4);
+                }
+
+
+            Rectangle character1pos = new Rectangle(new Vector2(78, 128), new Vector2(250, 250));
+
+                CharactersInShop[0].Rectangle.Position = Store.PositionsList[CharactersInShop[0].PositionNum].Position;
+
+
+                Characters.AyanokojiRect.Position = character1pos.Position;
+
+                
+
+                
+
+            
+
+
+
+
+            }
+           else if (CharactersInShop[0].Stars >= 3)
+            {
+
+                for (int j = 0; j < 1; j += 1)
+                {
+                    positionNum = rnd.Next(4, 6);
+                }
+
+
+
+                Characters.AyanokojiRect.Position= Store.PositionsList[positionNum].Position;
+
+            }
+
+            if (CharactersInShop[1].Stars <= 3)
+            {
+
+
+
+                for (int j = 0; j < 1; j += 1)
+                {
+                    positionNum = rnd.Next(0, 4);
+                }
+
+
+
+                Characters.AyanokojiRect.X = Store.PositionsList[positionNum].X;
+                Characters.AyanokojiRect.Y = Store.PositionsList[positionNum].Y;
+
+
+
+
+            }
+            else if (CharactersInShop[1].Stars >= 3)
+            {
+
+                for (int j = 0; j < 1; j += 1)
+                {
+                    positionNum = rnd.Next(4, 6);
+                }
+
+
+
+                Characters.AyanokojiRect.X = Store.PositionsList[positionNum].X;
+                Characters.AyanokojiRect.Y = Store.PositionsList[positionNum].Y;
+    
+            }
+
+        }
+
+
+
+    }
+
+
 }
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -364,7 +519,7 @@ public class PowerUps
     }
 
     //---------------------------------------------------------------------------------------------
-    
+
 
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -381,9 +536,13 @@ public class Characters
     //--
     private string name;
     private int odds;
+    private int positionNum;
+
     private short stars;
     private double dps;
     private double level;
+
+    private bool inRotation;
     private PowerUps buffs;
 
     private Texture2D texture;
@@ -399,20 +558,25 @@ public class Characters
 
     //
 
-    public static Rectangle AyanokojiRect = new Rectangle(Store.ShopListPositions[pp].X, Store.ShopListPositions[pp].Y, 250, 250);
+    public static Rectangle AyanokojiRect = new Rectangle(new Vector2(924, 128), 250, 250);
     public static Rectangle TojiRect = new Rectangle(360, 128, 250, 250);
     public static Rectangle Madara = new Rectangle(642, 128, 250, 250);
     public static Rectangle Saitama = new Rectangle(924, 128, 250, 550);
 
-     //Textures
+    //Textures
 
     public static Texture2D AyanokojiTexture = Raylib.LoadTexture(@"Meo.png");
+    public static Texture2D AlternateAyanokojiTexture = Raylib.LoadTexture(@"Meo.png");
+
+    //
+
     public static Texture2D TojiTexture = Raylib.LoadTexture(@"Julle.png");
+    public static Texture2D AlternateTojiTexture = Raylib.LoadTexture(@"Julle.png");
 
 
 
 
-    public Characters (string name, short stars, double dps, double level, int odds, PowerUps buffs, Rectangle rectangle, Texture2D texture)
+    public Characters(string name, short stars, double dps, double level, int odds, int positionNum, PowerUps buffs, Rectangle rectangle, Texture2D texture, bool inRotation)
     {
         this.name = name;
         this.stars = stars;
@@ -422,6 +586,9 @@ public class Characters
         this.buffs = buffs;
         this.rectangle = rectangle;
         this.texture = texture;
+        this.inRotation = inRotation;
+        this.positionNum = positionNum;
+        
     }
 
     public string Name
@@ -446,13 +613,18 @@ public class Characters
     }
     public int Odds
     {
-        get{ return odds; }
-        set{ odds = value; }
+        get { return odds; }
+        set { odds = value; }
+    }
+    public int PositionNum
+    {
+        get { return positionNum; }
+        set { positionNum = value; }
     }
     public PowerUps Buffs
     {
-        get{ return buffs;}
-        set{ buffs = value;} 
+        get { return buffs; }
+        set { buffs = value; }
     }
     public Rectangle Rectangle
     {
@@ -464,19 +636,24 @@ public class Characters
         get { return texture; }
         set { texture = value; }
     }
+    public bool InRotation
+    {
+        get { return inRotation; }
+        set { inRotation = value; }
+    }
 
 
-    
-    
-    
-    
 
-    
+
+
+
+
+
 
 
     public void Draw()
     {
-        
+
 
 
     }
@@ -490,27 +667,7 @@ public class Characters
 //                                                      ShopItems
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-public class ShopItems
-{
 
-    private Characters characters;
-    private bool inRotation;
-
-    public ShopItems (Characters characters, bool inRotation)
-    {
-
-        this.characters = characters;
-        this.inRotation = inRotation;
-
-    }
-
-    public bool InRotation
-    {
-        get{ return inRotation; }
-        set{ inRotation = value;}
-    }
-
-}
 
 
 

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\yoyoa\\OneDrive\\Documents\\Slutprojekt-Testing-lists\\Slutprojekt-Testing-lists\\Slutprojekt\\Slutprojekt.csproj": {}
+    "C:\\Users\\yoyoa\\OneDrive\\Documents\\Slutprojekt-Testing-lists\\Slutprojekt-Testing-lists\\Slutprojekt\\Slutprojekt.csproj": {}
   },
   "projects": {
-    "c:\\Users\\yoyoa\\OneDrive\\Documents\\Slutprojekt-Testing-lists\\Slutprojekt-Testing-lists\\Slutprojekt\\Slutprojekt.csproj": {
+    "C:\\Users\\yoyoa\\OneDrive\\Documents\\Slutprojekt-Testing-lists\\Slutprojekt-Testing-lists\\Slutprojekt\\Slutprojekt.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\yoyoa\\OneDrive\\Documents\\Slutprojekt-Testing-lists\\Slutprojekt-Testing-lists\\Slutprojekt\\Slutprojekt.csproj",
+        "projectUniqueName": "C:\\Users\\yoyoa\\OneDrive\\Documents\\Slutprojekt-Testing-lists\\Slutprojekt-Testing-lists\\Slutprojekt\\Slutprojekt.csproj",
         "projectName": "Slutprojekt",
-        "projectPath": "c:\\Users\\yoyoa\\OneDrive\\Documents\\Slutprojekt-Testing-lists\\Slutprojekt-Testing-lists\\Slutprojekt\\Slutprojekt.csproj",
+        "projectPath": "C:\\Users\\yoyoa\\OneDrive\\Documents\\Slutprojekt-Testing-lists\\Slutprojekt-Testing-lists\\Slutprojekt\\Slutprojekt.csproj",
         "packagesPath": "C:\\Users\\yoyoa\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\yoyoa\\OneDrive\\Documents\\Slutprojekt-Testing-lists\\Slutprojekt-Testing-lists\\Slutprojekt\\obj\\",
+        "outputPath": "C:\\Users\\yoyoa\\OneDrive\\Documents\\Slutprojekt-Testing-lists\\Slutprojekt-Testing-lists\\Slutprojekt\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\yoyoa\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -32,6 +32,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -59,7 +64,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

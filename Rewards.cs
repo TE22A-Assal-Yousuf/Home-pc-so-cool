@@ -1,8 +1,6 @@
-using System.ComponentModel;
+
 using System.Numerics;
-using System.Reflection.PortableExecutable;
-using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
+
 
 
 /*
@@ -225,17 +223,15 @@ class Rewards
 
 
 
-    public void DrawCharacters()
+    public void LoadCharacters()
     {
-
-
-
+        
         //=============================================================================================================================================================================
         // (ง •̀_•́)ง ||          AYANOKOJI       
         //=============================================================================================================================================================================
 
-        Characters Ayanokoji = new Characters("Ayanokoji", 2, 300, 1, 65, 0,BuffList[0], Characters.AyanokojiRect, Characters.AyanokojiTexture, true);
-
+        Characters Ayanokoji = new Characters("Ayanokoji", 2, 300, 1, 65, 0, 7, 7, BuffList[0], Characters.AyanokojiRect, Characters.AyanokojiTexture, true);
+        
         CharactersList.Add(Ayanokoji);
 
         if (Ayanokoji.InRotation == true)
@@ -252,7 +248,7 @@ class Rewards
         // (ง •̀_•́)ง ||          TOJI       
         //=============================================================================================================================================================================
 
-        Characters Toji = new Characters("Toji", 3, 500, 1, 30, 0, BuffList[0], Characters.TojiRect, Characters.TojiTexture, false);
+        Characters Toji = new Characters("Toji", 3, 500, 1, 30, 0, 1,1, BuffList[0], Characters.TojiRect, Characters.TojiTexture, false);
 
 
         CharactersList.Add(Toji);
@@ -263,7 +259,7 @@ class Rewards
         //=============================================================================================================================================================================
 
 
-        Characters Madara = new Characters("Madara", 3, 500, 1, 65, 0, BuffList[0], Characters.AyanokojiRect, Characters.AyanokojiTexture, false);
+        Characters Madara = new Characters("Madara", 3, 500, 1, 65, 0, 1,1, BuffList[0], Characters.AyanokojiRect, Characters.AyanokojiTexture, false);
         CharactersList.Add(Madara);
 
 
@@ -272,7 +268,7 @@ class Rewards
         //=============================================================================================================================================================================
 
 
-        Characters Saitama = new Characters("Saitama", 6, 500, 1, 65, 0, BuffList[0], Characters.AyanokojiRect, Characters.AyanokojiTexture, false);
+        Characters Saitama = new Characters("Saitama", 6, 500, 1, 65, 0, 1,1, BuffList[0], Characters.AyanokojiRect, Characters.AyanokojiTexture, false);
 
 
         CharactersList.Add(Saitama);
@@ -281,6 +277,14 @@ class Rewards
         //=============================================================================================================================================================================
         // (ง •̀_•́)ง ||          Toji       
         //=============================================================================================================================================================================
+
+
+
+    }
+
+    public void DrawCharacters()
+    {
+
 
 
 
@@ -296,13 +300,13 @@ class Rewards
         //----------
         // Ayanokoji
         //----------
-        Raylib.DrawRectangleRec(Ayanokoji.Rectangle, Color.Brown);
+        Raylib.DrawRectangleRec(Characters.AyanokojiRect, Color.Brown);
         //Raylib.DrawTexture(CharactersList[0].Texture, (int)CharactersList[0].Rectangle.X, (int)CharactersList[0].Rectangle.Y, Color.White);
 
         //----------
         // TOJI
         //----------
-        //Raylib.DrawRectangleRec(Toji.Rectangle, Color.Gray);
+        Raylib.DrawRectangleRec(Characters.TojiRect, Color.Gray);
         //Raylib.DrawTexture(CharactersList[1].Texture, (int)CharactersList[1].Rectangle.X, (int)CharactersList[1].Rectangle.Y, Color.White);
     }
 
@@ -310,19 +314,17 @@ class Rewards
     List<Characters> CharactersInShop = new List<Characters>(7);
 
     public static double ShopResetTimer = 10;
-    public static double ShopTimerTick;
-    
     public void Shoplogic()
     {
 
         ShopResetTimer -= Raylib.GetFrameTime();
 
-        
-    
+
+
         if (ShopResetTimer <= 0)
         {
 
-            CharactersInShop[0].Rectangle = new Rectangle (78, 128, 250, 250);
+
             ShopResetTimer = 10;
 
 
@@ -337,24 +339,24 @@ class Rewards
                 }
 
 
-            Rectangle character1pos = new Rectangle(new Vector2(78, 128), new Vector2(250, 250));
-
-                CharactersInShop[0].Rectangle.Position = Store.PositionsList[CharactersInShop[0].PositionNum].Position;
 
 
-                Characters.AyanokojiRect.Position = character1pos.Position;
+                CharactersInShop[0].RectposX = (int)Store.PositionsList[CharactersInShop[0].PositionNum].X;
+                CharactersInShop[0].RectposY = (int)Store.PositionsList[CharactersInShop[0].PositionNum].Y;
 
-                
 
-                
 
-            
+
+
+
+
+
 
 
 
 
             }
-           else if (CharactersInShop[0].Stars >= 3)
+            else if (CharactersInShop[0].Stars >= 3)
             {
 
                 for (int j = 0; j < 1; j += 1)
@@ -364,7 +366,7 @@ class Rewards
 
 
 
-                Characters.AyanokojiRect.Position= Store.PositionsList[positionNum].Position;
+                Characters.AyanokojiRect.Position = Store.PositionsList[positionNum].Position;
 
             }
 
@@ -399,7 +401,7 @@ class Rewards
 
                 Characters.AyanokojiRect.X = Store.PositionsList[positionNum].X;
                 Characters.AyanokojiRect.Y = Store.PositionsList[positionNum].Y;
-    
+
             }
 
         }
@@ -530,35 +532,7 @@ public class Characters
 
 
     //--
-
-
-
-    //--
-    private string name;
-    private int odds;
-    private int positionNum;
-
-    private short stars;
-    private double dps;
-    private double level;
-
-    private bool inRotation;
-    private PowerUps buffs;
-
-    private Texture2D texture;
-
-    private Rectangle rectangle;
-
-
-    //Rectangles
-
-    //
-    public static int pp = 0;
-
-
-    //
-
-    public static Rectangle AyanokojiRect = new Rectangle(new Vector2(924, 128), 250, 250);
+    public static Rectangle AyanokojiRect = new Rectangle(1, 1, 250, 250);
     public static Rectangle TojiRect = new Rectangle(360, 128, 250, 250);
     public static Rectangle Madara = new Rectangle(642, 128, 250, 250);
     public static Rectangle Saitama = new Rectangle(924, 128, 250, 550);
@@ -575,8 +549,43 @@ public class Characters
 
 
 
+    //--
+    private string name;
+    private int odds;
+    private int positionNum;
 
-    public Characters(string name, short stars, double dps, double level, int odds, int positionNum, PowerUps buffs, Rectangle rectangle, Texture2D texture, bool inRotation)
+    private short stars;
+    private double dps;
+    private double level;
+
+    private bool inRotation;
+
+    
+    private PowerUps buffs;
+
+    private Texture2D texture;
+
+    private Rectangle rectangle;
+
+    private double rectposX;    
+    private double rectposY;
+
+
+
+    //Rectangles
+
+    //
+    public static int pp = 0;
+
+
+    //
+
+
+
+
+
+
+    public Characters(string name, short stars, double dps, double level, int odds, int positionNum,  double rectposX, double rectposY, PowerUps buffs, Rectangle rectangle, Texture2D texture, bool inRotation)
     {
         this.name = name;
         this.stars = stars;
@@ -588,7 +597,9 @@ public class Characters
         this.texture = texture;
         this.inRotation = inRotation;
         this.positionNum = positionNum;
-        
+        this.rectposX = rectposX;
+        this.rectposY = rectposY;
+
     }
 
     public string Name
@@ -615,6 +626,16 @@ public class Characters
     {
         get { return odds; }
         set { odds = value; }
+    }
+    public double RectposX
+    {
+        get { return rectposX; }
+        set { rectposX = value; }
+    }
+    public double RectposY
+    {
+        get { return rectposY; }
+        set { rectposY = value; }
     }
     public int PositionNum
     {

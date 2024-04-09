@@ -31,7 +31,8 @@ Raylib.PlayMusicStream(music);
 
 while (!Raylib.WindowShouldClose())
 {
-        damage.update();
+    rewards.LoadCharacters();
+    damage.update();
 
     Raylib.UpdateMusicStream(music);
 
@@ -104,6 +105,8 @@ while (!Raylib.WindowShouldClose())
     {
         
         Store store1 = new();
+        Rewards rewards1 = new();
+
         store.Draw();
 
         store.Drawbackbutton();
@@ -112,7 +115,7 @@ while (!Raylib.WindowShouldClose())
 
         
         rewards.Shoplogic();
-        rewards.DrawCharacters();
+        rewards1.DrawCharacters();
 
         store1.Button();
 

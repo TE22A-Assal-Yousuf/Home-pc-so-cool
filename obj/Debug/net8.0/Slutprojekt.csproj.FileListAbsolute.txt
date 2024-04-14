@@ -42,3 +42,10 @@ c:\Users\yoyoa\OneDrive\Documents\Slutprojekt-Testing-lists\Slutprojekt-Testing-
 c:\Users\yoyoa\OneDrive\Documents\Slutprojekt-Testing-lists\Slutprojekt-Testing-lists\Slutprojekt\obj\Debug\net8.0\ref\Slutprojekt.dll
 c:\Users\yoyoa\OneDrive\Documents\Slutprojekt-Testing-lists\Slutprojekt-Testing-lists\Slutprojekt\obj\Debug\net8.0\Slutprojekt.sourcelink.json
 C:\Users\yoyoa\OneDrive\Documents\Slutprojekt-Testing-lists\Slutprojekt-Testing-lists\Slutprojekt\obj\Debug\net8.0\Slutproj.1075103B.Up2Date
+c:\Users\yoyoa\OneDrive\Documents\Slutprojekt-Testing-lists\Slutprojekt-Testing-lists\Slutprojekt\bin\Debug\net8.0\AyanokojiSprite.png
+c:\Users\yoyoa\OneDrive\Documents\Slutprojekt-Testing-lists\Slutprojekt-Testing-lists\Slutprojekt\bin\Debug\net8.0\MadaraSprite.png
+c:\Users\yoyoa\OneDrive\Documents\Slutprojekt-Testing-lists\Slutprojekt-Testing-lists\Slutprojekt\bin\Debug\net8.0\TojiSprite.png
+c:\Users\yoyoa\OneDrive\Documents\Slutprojekt-Testing-lists\Slutprojekt-Testing-lists\Slutprojekt\bin\Debug\net8.0\AkazaSprite.png
+c:\Users\yoyoa\OneDrive\Documents\Slutprojekt-Testing-lists\Slutprojekt-Testing-lists\Slutprojekt\bin\Debug\net8.0\JotaroSprite.png
+c:\Users\yoyoa\OneDrive\Documents\Slutprojekt-Testing-lists\Slutprojekt-Testing-lists\Slutprojekt\bin\Debug\net8.0\SaitamaSpriteBig.png
+c:\Users\yoyoa\OneDrive\Documents\Slutprojekt-Testing-lists\Slutprojekt-Testing-lists\Slutprojekt\bin\Debug\net8.0\YoruichiSprite.png

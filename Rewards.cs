@@ -225,13 +225,13 @@ class Rewards
 
     public void LoadCharacters()
     {
-        
+
         //=============================================================================================================================================================================
-        // (ง •̀_•́)ง ||          AYANOKOJI       
+        // (ง •̀_•́)ง ||         💪 AYANOKOJI 📖       
         //=============================================================================================================================================================================
 
         Characters Ayanokoji = new Characters("Ayanokoji", 2, 300, 1, 65, 0, 7, 7, BuffList[0], Characters.AyanokojiRect, Characters.AyanokojiTexture, true);
-        
+
         CharactersList.Add(Ayanokoji);
 
         if (Ayanokoji.InRotation == true)
@@ -245,71 +245,106 @@ class Rewards
 
 
         //=============================================================================================================================================================================
-        // (ง •̀_•́)ง ||          TOJI       
+        // (ง •̀_•́)ง ||         🗡️ TOJI 🩸👧🔫       
         //=============================================================================================================================================================================
 
-        Characters Toji = new Characters("Toji", 3, 500, 1, 30, 0, 1,1, BuffList[0], Characters.TojiRect, Characters.TojiTexture, false);
-
+        Characters Toji = new Characters("Toji", 3, 500, 1, 65, 0, 1, 1, BuffList[0], Characters.TojiRect, Characters.TojiTexture, true);
 
         CharactersList.Add(Toji);
 
 
+        if (Toji.InRotation == true)
+        {
+
+            CharactersInShop.Add(Toji);
+
+        }
+
+
         //=============================================================================================================================================================================
-        // (ง •̀_•́)ง ||          MADARA       
+        // (ง •̀_•́)ง ||         🥷 MADARA 🪕       
         //=============================================================================================================================================================================
 
 
-        Characters Madara = new Characters("Madara", 3, 500, 1, 65, 0, 1,1, BuffList[0], Characters.AyanokojiRect, Characters.AyanokojiTexture, false);
+        Characters Madara = new Characters("Madara", 6, 500, 1, 7, 0, 1, 1, BuffList[0], Characters.MadaraRect, Characters.MadaraTexture, true);
         CharactersList.Add(Madara);
 
 
+        if (Madara.InRotation == true)
+        {
+
+            CharactersInShop.Add(Madara);
+
+        }
+
+
         //=============================================================================================================================================================================
-        // (ง •̀_•́)ง ||          SAITAMA       
+        // (ง •̀_•́)ง ||         1️⃣ SAITAMA 👊     
         //=============================================================================================================================================================================
 
 
-        Characters Saitama = new Characters("Saitama", 6, 500, 1, 65, 0, 1,1, BuffList[0], Characters.AyanokojiRect, Characters.AyanokojiTexture, false);
-
-
+        Characters Saitama = new Characters("Saitama", 7, 500, 1, 0.1, 0, 1, 1, BuffList[0], Characters.SaitamaRect, Characters.SaitamaTexture, true);
         CharactersList.Add(Saitama);
 
 
-        //=============================================================================================================================================================================
-        // (ง •̀_•́)ง ||          Toji       
-        //=============================================================================================================================================================================
+        if (Saitama.InRotation == true)
+        {
+
+            CharactersInShop.Add(Saitama);
+
+        }
 
 
+
+
+        //=============================================================================================================================================================================
+        // (ง •̀_•́)ง ||         ❄️ AKAZA ❄️      
+        //=============================================================================================================================================================================
+
+        
+        Characters Akaza = new Characters("Akaza", 4, 500, 1, 40, 0, 1, 1, BuffList[0], Characters.AkazaRect, Characters.AkazaTexture, true);
+        CharactersList.Add(Akaza);
+
+
+        if (Akaza.InRotation == true)
+        {
+
+            CharactersInShop.Add(Akaza);
+
+        }
+        //=============================================================================================================================================================================
+        // (ง •̀_•́)ง ||          ⚡YORUICHI🐈‍⬛      
+        //=============================================================================================================================================================================
+
+        Characters Yoruichi = new Characters("Yoruichi", 5, 500, 1, 10, 0, 1, 1, BuffList[0], Characters.YoruichiRect, Characters.YoruichiTexture, true);
+        CharactersList.Add(Yoruichi);
+
+
+        if (Yoruichi.InRotation == true)
+        {
+
+            CharactersInShop.Add(Yoruichi);
+
+        }
+
+        //=============================================================================================================================================================================
+        // (ง •̀_•́)ง ||          ⚡YORUICHI🐈‍⬛      
+        //=============================================================================================================================================================================
+
+        Characters Jotaro = new Characters("Jotaro", 6, 500, 1, 7, 0, 1, 1, BuffList[0], Characters.JotaroRect, Characters.JotaroTexture, true);
+        CharactersList.Add(Jotaro);
+
+
+        if (Jotaro.InRotation == true)
+        {
+
+            CharactersInShop.Add(Jotaro);
+
+        }
 
     }
 
-    public void DrawCharacters()
-    {
-
-
-
-
-        //----------
-        // MADARA
-        //----------
-
-        //Raylib.DrawRectangleRec(Characters.Madara, Color.Red);
-        //Raylib.DrawRectangleRec(Characters.Saitama, Color.Yellow);
-
-        //--
-
-        //----------
-        // Ayanokoji
-        //----------
-        Raylib.DrawRectangleRec(Characters.AyanokojiRect, Color.Brown);
-        //Raylib.DrawTexture(CharactersList[0].Texture, (int)CharactersList[0].Rectangle.X, (int)CharactersList[0].Rectangle.Y, Color.White);
-
-        //----------
-        // TOJI
-        //----------
-        Raylib.DrawRectangleRec(Characters.TojiRect, Color.Gray);
-        //Raylib.DrawTexture(CharactersList[1].Texture, (int)CharactersList[1].Rectangle.X, (int)CharactersList[1].Rectangle.Y, Color.White);
-    }
-
+    
 
     List<Characters> CharactersInShop = new List<Characters>(7);
 
@@ -325,84 +360,10 @@ class Rewards
         {
 
 
-            ShopResetTimer = 10;
-
-
-            if (CharactersInShop[0].Stars <= 3)
-            {
+            ShopResetTimer = 1000;
 
 
 
-                for (int j = 0; j < 1; j += 1)
-                {
-                    CharactersInShop[0].PositionNum = rnd.Next(0, 4);
-                }
-
-
-
-
-                CharactersInShop[0].RectposX = (int)Store.PositionsList[CharactersInShop[0].PositionNum].X;
-                CharactersInShop[0].RectposY = (int)Store.PositionsList[CharactersInShop[0].PositionNum].Y;
-
-
-
-
-
-
-
-
-
-
-
-
-            }
-            else if (CharactersInShop[0].Stars >= 3)
-            {
-
-                for (int j = 0; j < 1; j += 1)
-                {
-                    positionNum = rnd.Next(4, 6);
-                }
-
-
-
-                Characters.AyanokojiRect.Position = Store.PositionsList[positionNum].Position;
-
-            }
-
-            if (CharactersInShop[1].Stars <= 3)
-            {
-
-
-
-                for (int j = 0; j < 1; j += 1)
-                {
-                    positionNum = rnd.Next(0, 4);
-                }
-
-
-
-                Characters.AyanokojiRect.X = Store.PositionsList[positionNum].X;
-                Characters.AyanokojiRect.Y = Store.PositionsList[positionNum].Y;
-
-
-
-
-            }
-            else if (CharactersInShop[1].Stars >= 3)
-            {
-
-                for (int j = 0; j < 1; j += 1)
-                {
-                    positionNum = rnd.Next(4, 6);
-                }
-
-
-
-                Characters.AyanokojiRect.X = Store.PositionsList[positionNum].X;
-                Characters.AyanokojiRect.Y = Store.PositionsList[positionNum].Y;
-
-            }
 
         }
 
@@ -531,27 +492,33 @@ public class Characters
 {
 
 
-    //--
-    public static Rectangle AyanokojiRect = new Rectangle(1, 1, 250, 250);
-    public static Rectangle TojiRect = new Rectangle(360, 128, 250, 250);
-    public static Rectangle Madara = new Rectangle(642, 128, 250, 250);
-    public static Rectangle Saitama = new Rectangle(924, 128, 250, 550);
+    //Rectangles
+    
+    public static Rectangle AyanokojiRect = new Rectangle(Store.Position1.Position, 250, 250);
+    public static Rectangle TojiRect = new Rectangle(Store.Position2.Position, 250, 250);
+    public static Rectangle AkazaRect = new Rectangle(Store.Position3.Position, 250, 250);
+    public static Rectangle YoruichiRect = new Rectangle(Store.Position4.Position, 250, 250);
+    public static Rectangle MadaraRect = new Rectangle(Store.Position5.Position, 250, 250);
+    public static Rectangle JotaroRect = new Rectangle(Store.Position6.Position, 250, 250);
+    public static Rectangle SaitamaRect = new Rectangle(Store.SpecialPosition.Position, 250, 550);
 
     //Textures
 
-    public static Texture2D AyanokojiTexture = Raylib.LoadTexture(@"Meo.png");
-    public static Texture2D AlternateAyanokojiTexture = Raylib.LoadTexture(@"Meo.png");
+    public static Texture2D AyanokojiTexture = Raylib.LoadTexture(@"AyanokojiSprite.png");
+    public static Texture2D TojiTexture = Raylib.LoadTexture(@"TojiSprite.png");
+    public static Texture2D MadaraTexture = Raylib.LoadTexture(@"MadaraSprite.png");
+    public static Texture2D AkazaTexture = Raylib.LoadTexture(@"AkazaSprite.png");
+    public static Texture2D JotaroTexture = Raylib.LoadTexture(@"JotaroSprite.png");
+    public static Texture2D YoruichiTexture = Raylib.LoadTexture(@"YoruichiSprite.png");
+    public static Texture2D SaitamaTexture = Raylib.LoadTexture(@"SaitamaSpriteBig.png");
 
-    //
 
-    public static Texture2D TojiTexture = Raylib.LoadTexture(@"Julle.png");
-    public static Texture2D AlternateTojiTexture = Raylib.LoadTexture(@"Julle.png");
 
 
 
     //--
     private string name;
-    private int odds;
+    private double odds;
     private int positionNum;
 
     private short stars;
@@ -560,14 +527,14 @@ public class Characters
 
     private bool inRotation;
 
-    
+
     private PowerUps buffs;
 
     private Texture2D texture;
 
     private Rectangle rectangle;
 
-    private double rectposX;    
+    private double rectposX;
     private double rectposY;
 
 
@@ -585,7 +552,7 @@ public class Characters
 
 
 
-    public Characters(string name, short stars, double dps, double level, int odds, int positionNum,  double rectposX, double rectposY, PowerUps buffs, Rectangle rectangle, Texture2D texture, bool inRotation)
+    public Characters(string name, short stars, double dps, double level, double odds, int positionNum, double rectposX, double rectposY, PowerUps buffs, Rectangle rectangle, Texture2D texture, bool inRotation)
     {
         this.name = name;
         this.stars = stars;
@@ -622,7 +589,7 @@ public class Characters
         get { return level; }
         set { level = value; }
     }
-    public int Odds
+    public double Odds
     {
         get { return odds; }
         set { odds = value; }

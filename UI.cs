@@ -22,7 +22,7 @@ class UI
                 Raylib.DrawTextEx(Damage.MinecrafterFont, "Points:", new Vector2(575, 230), 40, 5, Color.White);
                 Raylib.DrawTextEx(Damage.MinecraftFont, $"{Damage.points}", new Vector2(520, 270), 50, 5, Color.White);
 
-                Raylib.DrawTextEx(Damage.MinecraftFont, $"{Rewards.ShopResetTimer}", new Vector2(100, 70), 50, 5, Color.White);
+                //Raylib.DrawTextEx(Damage.MinecraftFont, $"{Rewards.ShopResetTimer}", new Vector2(100, 70), 50, 5, Color.White);
 
                 Raylib.DrawTextEx(Damage.MinecrafterFont, $"DPS {Player.autoDamage}", new Vector2(930, 50), 20, 5, Color.White);
 
@@ -88,129 +88,192 @@ public class Store
 
         }
         //Shoplogic ig idk rlly
-
-        
-
-
-
-
-
-//Rectangles
-public static Rectangle Storebutton = new Rectangle(930, 730, 300, 50);
-public static Rectangle Backbutton = new Rectangle(30, 720, 150, 50);
-public static Rectangle Buybutton = new Rectangle(400, 720, 400, 50);
-public static Rectangle ShopWindow = new Rectangle(40, 40, 1200, 720);
-public static Rectangle Background = new Rectangle(0, 0, 1280, 800);
-
-//Textures
-public static Texture2D Backbuttontexture = Raylib.LoadTexture(@"Backbuttontexture.png");
-public static Texture2D Buybuttontexture = Raylib.LoadTexture(@"Buybuttontexture.png");
-
-
-public static Texture2D Shopbg = Raylib.LoadTexture(@"Shopbg.png");
-public static Texture2D Shopbg2 = Raylib.LoadTexture(@"Shopbg2.png");
-public static Texture2D Shopbg3 = Raylib.LoadTexture(@"Shopbg3.png");
-public static Texture2D Shopovrly = Raylib.LoadTexture(@"shopovrly.png");
-
-
-public static bool storebuttonispressed = false;
-public static bool backbuttonispressed = false;
-
-public static int wishPrice = 200;
-
-Vector2 mousePos = Raylib.GetMousePosition();
-
-
-
-public void Draw()
-{
-
-        Raylib.DrawTexture(Shopbg3, 0, 0, Color.White);
-        Raylib.DrawTexture(Shopovrly, 32, 32, Color.White);
-
-
-
-        //Raylib.DrawRectangleRec(Background, Color.DarkBrown);
-        //Raylib.DrawRectangleRec(ShopWindow, Color.Brown);
-
-        Raylib.DrawTextEx(Damage.MinecraftFont, $"{Damage.points}", new Vector2(880, 42), 50, 5, Color.White);
-        Raylib.DrawTextEx(Damage.MinecraftFont, $"{Damage.gems}", new Vector2(720, 42), 50, 5, Color.White);
-                        Raylib.DrawTextEx(Damage.MinecraftFont, $"{Rewards.ShopResetTimer}", new Vector2(100, 70), 50, 5, Color.White);
-
-
-
-
-
-}
-public void Drawstorebutton()
-{
-
-        Raylib.DrawRectangleRec(Storebutton, Color.Brown);
-        Raylib.DrawText("STORE", (int)Storebutton.X, (int)Storebutton.Y + 5, 40, Color.Black);
-
-}
-public void Drawbackbutton()
-{
-        Raylib.DrawRectangleRec(Backbutton, Color.Green);
-        Raylib.DrawTexture(Backbuttontexture, (int)Backbutton.X, (int)Backbutton.Y, Color.White);
-        //Raylib.DrawText("BACK", (int)Backbutton.X, (int)Backbutton.Y + 5, 40, Color.Black);
-
-
-}
-public void DrawBuybutton()
-{
-        Raylib.DrawRectangleRec(Buybutton, Color.Brown);
-        Raylib.DrawTexture(Buybuttontexture, (int)Buybutton.X, (int)Buybutton.Y, Color.Blank);
-        Raylib.DrawText("BUY", (int)Buybutton.X, (int)Buybutton.Y + 5, 40, Color.Black);
-
-}
-public void Button()
-{
-
-        if (Raylib.CheckCollisionPointRec(mousePos, Storebutton))
+        public void DrawCharacters()
         {
 
-                if (Raylib.IsMouseButtonPressed(MouseButton.Left))
-                {
 
-                        storebuttonispressed = true;
-                        backbuttonispressed = false;
 
-                }
 
+
+
+
+
+                //--
+
+                //----------
+                // Ayanokoji
+                //----------
+                Raylib.DrawRectangleRec(Characters.AyanokojiRect, Color.Brown);
+                Raylib.DrawTexture(Characters.AyanokojiTexture, (int)Characters.AyanokojiRect.X, (int)Characters.AyanokojiRect.Y, Color.White);
+
+                //----------
+                // TOJI
+                //----------
+                Raylib.DrawRectangleRec(Characters.TojiRect, Color.Gray);
+                Raylib.DrawTexture(Characters.TojiTexture, (int)Characters.TojiRect.X, (int)Characters.TojiRect.Y, Color.White);
+
+                //----------
+                // MADARA
+                //----------
+
+                Raylib.DrawRectangleRec(Characters.MadaraRect, Color.Red);
+                Raylib.DrawTexture(Characters.MadaraTexture, (int)Characters.MadaraRect.X, (int)Characters.MadaraRect.Y, Color.White);
+
+                //----------
+                // Saitama
+                //----------
+
+                Raylib.DrawRectangleRec(Characters.SaitamaRect, Color.Yellow);
+                Raylib.DrawTexture(Characters.SaitamaTexture, (int)Characters.SaitamaRect.X, (int)Characters.SaitamaRect.Y, Color.White);
+
+
+                //----------
+                // Akaza
+                //----------
+
+                Raylib.DrawRectangleRec(Characters.AkazaRect, Color.Blue);
+                Raylib.DrawTexture(Characters.AkazaTexture, (int)Characters.AkazaRect.X, (int)Characters.AkazaRect.Y, Color.White);
+
+                //----------
+                // Yoruichi
+                //----------
+
+                Raylib.DrawRectangleRec(Characters.YoruichiRect, Color.DarkBrown);
+                Raylib.DrawTexture(Characters.YoruichiTexture, (int)Characters.YoruichiRect.X, (int)Characters.YoruichiRect.Y, Color.White);
+
+                //----------
+                // Jotaro
+                //----------
+
+                Raylib.DrawRectangleRec(Characters.JotaroRect, Color.DarkBrown);
+                Raylib.DrawTexture(Characters.JotaroTexture, (int)Characters.JotaroRect.X, (int)Characters.JotaroRect.Y, Color.White);
 
 
         }
 
-        if (Raylib.CheckCollisionPointRec(mousePos, Backbutton))
+
+
+
+
+
+
+
+        //Rectangles
+        public static Rectangle Storebutton = new Rectangle(930, 730, 300, 50);
+        public static Rectangle Backbutton = new Rectangle(30, 720, 150, 50);
+        public static Rectangle Buybutton = new Rectangle(400, 720, 400, 50);
+        public static Rectangle ShopWindow = new Rectangle(40, 40, 1200, 720);
+        public static Rectangle Background = new Rectangle(0, 0, 1280, 800);
+
+        //Textures
+        public static Texture2D Backbuttontexture = Raylib.LoadTexture(@"Backbuttontexture.png");
+        public static Texture2D Buybuttontexture = Raylib.LoadTexture(@"Buybuttontexture.png");
+
+
+        public static Texture2D Shopbg = Raylib.LoadTexture(@"Shopbg.png");
+        public static Texture2D Shopbg2 = Raylib.LoadTexture(@"Shopbg2.png");
+        public static Texture2D Shopbg3 = Raylib.LoadTexture(@"Shopbg3.png");
+        public static Texture2D Shopovrly = Raylib.LoadTexture(@"shopovrly.png");
+
+
+        public static bool storebuttonispressed = false;
+        public static bool backbuttonispressed = false;
+
+        public static int wishPrice = 200;
+
+        Vector2 mousePos = Raylib.GetMousePosition();
+
+
+
+        public void Draw()
         {
-                if (Raylib.IsMouseButtonPressed(MouseButton.Left))
-                {
 
-                        backbuttonispressed = true;
-                        storebuttonispressed = false;
+                Raylib.DrawTexture(Shopbg3, 0, 0, Color.White);
+                Raylib.DrawTexture(Shopovrly, 32, 32, Color.White);
 
-                }
+
+
+                //Raylib.DrawRectangleRec(Background, Color.DarkBrown);
+                //Raylib.DrawRectangleRec(ShopWindow, Color.Brown);
+
+                Raylib.DrawTextEx(Damage.MinecraftFont, $"{Damage.points}", new Vector2(880, 42), 50, 5, Color.White);
+                Raylib.DrawTextEx(Damage.MinecraftFont, $"{Damage.gems}", new Vector2(720, 42), 50, 5, Color.White);
+                //Raylib.DrawTextEx(Damage.MinecraftFont, $"{Rewards.ShopResetTimer}", new Vector2(100, 70), 50, 5, Color.White);
+
+
+
+
+
         }
-        if (Raylib.CheckCollisionPointRec(mousePos, Buybutton))
+        public void Drawstorebutton()
         {
-                if (Raylib.IsMouseButtonPressed(MouseButton.Left))
+
+                Raylib.DrawRectangleRec(Storebutton, Color.Brown);
+                Raylib.DrawText("STORE", (int)Storebutton.X, (int)Storebutton.Y + 5, 40, Color.Black);
+
+        }
+        public void Drawbackbutton()
+        {
+                Raylib.DrawRectangleRec(Backbutton, Color.Green);
+                Raylib.DrawTexture(Backbuttontexture, (int)Backbutton.X, (int)Backbutton.Y, Color.White);
+                //Raylib.DrawText("BACK", (int)Backbutton.X, (int)Backbutton.Y + 5, 40, Color.Black);
+
+
+        }
+        public void DrawBuybutton()
+        {
+                Raylib.DrawRectangleRec(Buybutton, Color.Brown);
+                Raylib.DrawTexture(Buybuttontexture, (int)Buybutton.X, (int)Buybutton.Y, Color.Blank);
+                Raylib.DrawText("BUY", (int)Buybutton.X, (int)Buybutton.Y + 5, 40, Color.Black);
+
+        }
+        public void Button()
+        {
+
+                if (Raylib.CheckCollisionPointRec(mousePos, Storebutton))
                 {
-                        if (Damage.points >= wishPrice)
+
+                        if (Raylib.IsMouseButtonPressed(MouseButton.Left))
                         {
 
-                                Damage.points -= 200;
-                                Player.autoDamage += 200;
+                                storebuttonispressed = true;
+                                backbuttonispressed = false;
+
+                        }
+
+
+
+                }
+
+                if (Raylib.CheckCollisionPointRec(mousePos, Backbutton))
+                {
+                        if (Raylib.IsMouseButtonPressed(MouseButton.Left))
+                        {
+
+                                backbuttonispressed = true;
+                                storebuttonispressed = false;
 
                         }
                 }
+                if (Raylib.CheckCollisionPointRec(mousePos, Buybutton))
+                {
+                        if (Raylib.IsMouseButtonPressed(MouseButton.Left))
+                        {
+                                if (Damage.gems >= wishPrice)
+                                {
+
+                                        Damage.points -= 200;
+                                        Player.autoDamage += 200;
+
+                                }
+                        }
+
+                }
+
 
         }
 
 
-}
 
-
-        
 
 }

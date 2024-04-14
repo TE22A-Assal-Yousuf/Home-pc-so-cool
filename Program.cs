@@ -23,15 +23,18 @@ Raylib.SetTargetFPS(fps);
 Music music = Raylib.LoadMusicStream("Neverseemeagain.mp3");
 
 
-String scene = "game";
+String scene = "shop";
 
 Raylib.InitAudioDevice();
 
 Raylib.PlayMusicStream(music);
 
+rewards.BuffsAdd();
+rewards.LoadCharacters();
+
+
 while (!Raylib.WindowShouldClose())
 {
-    rewards.LoadCharacters();
     damage.update();
 
     Raylib.UpdateMusicStream(music);
@@ -76,9 +79,8 @@ while (!Raylib.WindowShouldClose())
         damage1.Hit();
 
         rewards1.Upgradebuttons();
-        rewards.BuffsAdd();
+        
 
-        rewards.Shoplogic();
 
         
         //graphics
@@ -115,7 +117,7 @@ while (!Raylib.WindowShouldClose())
 
         
         rewards.Shoplogic();
-        rewards1.DrawCharacters();
+        store.DrawCharacters();
 
         store1.Button();
 

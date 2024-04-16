@@ -1,5 +1,6 @@
 using System.Numerics;
 using System.Security.Cryptography.X509Certificates;
+using System.Text.RegularExpressions;
 
 class UI
 {
@@ -9,10 +10,10 @@ class UI
 
         public void DrawLines()
         {
-                Raylib.DrawLine(10, 0, 10, 800, Color.Red);
-                Raylib.DrawLine(460, 0, 460, 800, Color.Red);
-                Raylib.DrawLine(1270, 0, 1270, 800, Color.Red);
-                Raylib.DrawLine(870, 0, 870, 800, Color.Red);
+                Raylib.DrawLine(10, 0, 10, 800, Color.Red);//side 1
+                Raylib.DrawLine(460, 0, 460, 800, Color.Red);//side 2
+                Raylib.DrawLine(1270, 0, 1270, 800, Color.Red);//down 2
+                Raylib.DrawLine(870, 0, 870, 800, Color.Red);//down 1
         }
         public void Draw()
         {
@@ -55,7 +56,6 @@ public class Store
 {
 
         //postition 
-
         public static List<Rectangle> PositionsList = new List<Rectangle>();
 
 
@@ -181,7 +181,7 @@ public class Store
 
         public static int wishPrice = 200;
 
-        Vector2 mousePos = Raylib.GetMousePosition();
+        public Vector2 mousePos = Raylib.GetMousePosition();
 
 
 
@@ -190,6 +190,8 @@ public class Store
 
                 Raylib.DrawTexture(Shopbg3, 0, 0, Color.White);
                 Raylib.DrawTexture(Shopovrly, 32, 32, Color.White);
+                Raylib.DrawText($"{Inventory.randomNumber}", 100, 100, 50, Color.Blue);
+
 
 
 
@@ -227,6 +229,8 @@ public class Store
                 Raylib.DrawText("BUY", (int)Buybutton.X, (int)Buybutton.Y + 5, 40, Color.Black);
 
         }
+
+
         public void Button()
         {
 
@@ -251,10 +255,22 @@ public class Store
                         {
 
                                 backbuttonispressed = true;
-                                storebuttonispressed = false;
+
+                                if (storebuttonispressed == true)
+                                {
+
+                                        storebuttonispressed = false;
+
+                                }
+                                else if (Inventory.InventoryButtonispressed == true)
+                                {
+
+                                        Inventory.InventoryButtonispressed = false;
+                                }
 
                         }
                 }
+
                 if (Raylib.CheckCollisionPointRec(mousePos, Buybutton))
                 {
                         if (Raylib.IsMouseButtonPressed(MouseButton.Left))
@@ -262,8 +278,9 @@ public class Store
                                 if (Damage.gems >= wishPrice)
                                 {
 
-                                        Damage.points -= 200;
-                                        Player.autoDamage += 200;
+                                        Inventory.WishLogic();
+
+
 
                                 }
                         }
@@ -276,4 +293,226 @@ public class Store
 
 
 
+
+
+}
+public class Inventory
+{
+        Store store = new();
+
+
+
+        public static Rectangle InventoryButton = new Rectangle(265, 600, 400, 50);
+        public static Rectangle InvBackbutton = new Rectangle(30, 720, 150, 50);
+        public static bool InventoryButtonispressed = false;
+
+        public int inventorynum = 0;
+
+
+        public void DrawInventory()
+        {
+
+                Raylib.DrawTexture(Store.Shopbg2, 0, 0, Color.White);
+
+                foreach (Characters i in Player.Inventory)
+                {
+
+
+
+                        if (Player.Inventory.Count == inventorynum)
+                        {
+                                inventorynum++;
+
+                        }
+
+                        Raylib.DrawRectangleRec(Player.Inventory[inventorynum].Rectangle, Color.White);
+                        Raylib.DrawTexture(Player.Inventory[inventorynum].Texture, (int)Player.Inventory[inventorynum].Rectangle.X, (int)Player.Inventory[inventorynum].Rectangle.Y, Color.White);
+
+
+
+                }
+
+
+
+
+        }
+        public void DrawInventoryButton()
+        {
+                Raylib.DrawRectangleRec(InventoryButton, Color.Brown);
+                Raylib.DrawText("Inventory", (int)InventoryButton.X, (int)InventoryButton.Y + 5, 40, Color.Black);
+                //Raylib.DrawTexture(Buybuttontexture, (int)Buybutton.X, (int)Buybutton.Y, Color.Blank);
+
+        }
+        public void DrawInvbackbutton()
+        {
+                Raylib.DrawRectangleRec(InvBackbutton, Color.Green);
+                Raylib.DrawTexture(Store.Backbuttontexture, (int)InvBackbutton.X, (int)InvBackbutton.Y, Color.White);
+                //Raylib.DrawText("BACK", (int)Backbutton.X, (int)Backbutton.Y + 5, 40, Color.Black);
+
+
+        }
+
+        public void InventoryLogic()
+        {
+                if (Raylib.CheckCollisionPointRec(store.mousePos, InventoryButton))
+                {
+                        if (Raylib.IsMouseButtonPressed(MouseButton.Left))
+                        {
+
+                                InventoryButtonispressed = true;
+
+                                Store.backbuttonispressed = false;
+
+                                Store.storebuttonispressed = false;
+
+                        }
+                }
+
+                if (Raylib.CheckCollisionPointRec(store.mousePos, InvBackbutton))
+                {
+                        if (Raylib.IsMouseButtonPressed(MouseButton.Left))
+                        {
+
+                                Store.backbuttonispressed = true;
+
+                                if (Store.storebuttonispressed == true)
+                                {
+
+                                        Store.storebuttonispressed = false;
+
+                                }
+                                else if (Inventory.InventoryButtonispressed == true)
+                                {
+
+                                        Inventory.InventoryButtonispressed = false;
+                                }
+
+                        }
+                }
+
+        }
+        public static Random random = new Random();
+        public static Rectangle RewardPos = new Rectangle(new Vector2(500, 500), new Vector2(250, 250));
+
+        public static Rectangle OriginalPos;
+        public static Characters rewardedCharacter;
+        public static bool rewardClaimed = true;
+        public static int randomNumber;
+        public static float rewardTimer = 5;
+        public static void WishLogic()
+        {
+
+                Damage.gems -= 1;
+
+                rewardTimer = 5;
+
+                randomNumber = random.Next(1, 100);
+
+
+
+                if (randomNumber <= 50)
+                {
+
+                        randomNumber = random.Next(1, 100);
+
+
+                        if (randomNumber <= Rewards.CharactersInShop[1].Odds) // 50
+                        {
+
+                                rewardedCharacter = Rewards.CharactersInShop[0];
+
+                        }
+                        else if (randomNumber >= Rewards.CharactersInShop[1].Odds + 1) //50
+                        {
+
+                                rewardedCharacter = Rewards.CharactersInShop[1];
+
+                        }
+
+                }
+
+
+                else if (randomNumber <= 53 && randomNumber >= 51) //3
+                {
+                        rewardedCharacter = Rewards.CharactersInShop[2]; //Madara
+                }
+
+                else if (randomNumber == 54)//1
+                {
+                        rewardedCharacter = Rewards.CharactersInShop[3];
+
+                }
+
+                else if (randomNumber <= 85 && randomNumber >= 55)//30
+                {
+                        rewardedCharacter = Rewards.CharactersInShop[4];
+
+                }
+
+                else if (randomNumber <= 95 && randomNumber >= 86)//9
+                {
+                        rewardedCharacter = Rewards.CharactersInShop[5];
+
+                }
+
+                else if (randomNumber <= 100 && randomNumber >= 96)//5
+                {
+                        rewardedCharacter = Rewards.CharactersInShop[6];
+                }
+
+
+
+
+
+                rewardClaimed = false;
+                DrawReward();
+
+
+        }
+
+        public static void Update()
+        {
+                rewardTimer -= Raylib.GetFrameTime();
+        }
+        public static void DrawReward()
+        {
+
+
+
+
+
+                rewardTimer = 5;
+
+
+                OriginalPos = rewardedCharacter.Rectangle;
+
+                rewardedCharacter.Rectangle = RewardPos;
+
+
+                
+                if (rewardTimer >= 0)
+                {
+                        Raylib.DrawRectangle(0, 0, 1200, 800, Color.Brown);
+                        Raylib.DrawRectangleRec(rewardedCharacter.Rectangle, Color.White);
+                        Raylib.DrawTexture(rewardedCharacter.Texture, (int)rewardedCharacter.Rectangle.X, (int)rewardedCharacter.Rectangle.Y, Color.White);
+                        Raylib.DrawText($"{rewardedCharacter.Name}", (int)rewardedCharacter.Rectangle.X, (int)rewardedCharacter.Rectangle.Y + 300, 10, Color.Violet);
+
+                }
+
+                if (rewardTimer <= 0)
+                {
+                        rewardClaimed = true;
+
+                        Player.Inventory.Add(rewardedCharacter);
+
+                        rewardedCharacter.Rectangle = OriginalPos;
+                }
+
+
+
+
+
+
+
+        }
 }

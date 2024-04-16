@@ -214,7 +214,6 @@ class Rewards
     //------------------------------------//------------------------------------//------------------------------------//------------------------------------//------------------------------------
     public static List<Characters> CharactersList = new List<Characters>();
     public static Vector2 CurrentPos = new Vector2(0, 0);
-    public static int positionNum;
 
     Random rnd = new Random();
 
@@ -230,7 +229,7 @@ class Rewards
         // (ง •̀_•́)ง ||         💪 AYANOKOJI 📖       
         //=============================================================================================================================================================================
 
-        Characters Ayanokoji = new Characters("Ayanokoji", 2, 300, 1, 65, 0, 7, 7, BuffList[0], Characters.AyanokojiRect, Characters.AyanokojiTexture, true);
+        Characters Ayanokoji = new Characters("Ayanokoji", 2, 300, 1, 50, 0, 7, 7, BuffList[0], Characters.AyanokojiRect, Characters.AyanokojiTexture, true);
 
         CharactersList.Add(Ayanokoji);
 
@@ -248,7 +247,7 @@ class Rewards
         // (ง •̀_•́)ง ||         🗡️ TOJI 🩸👧🔫       
         //=============================================================================================================================================================================
 
-        Characters Toji = new Characters("Toji", 3, 500, 1, 65, 0, 1, 1, BuffList[0], Characters.TojiRect, Characters.TojiTexture, true);
+        Characters Toji = new Characters("Toji", 3, 500, 1, 50, 0, 1, 1, BuffList[0], Characters.TojiRect, Characters.TojiTexture, true);
 
         CharactersList.Add(Toji);
 
@@ -266,7 +265,7 @@ class Rewards
         //=============================================================================================================================================================================
 
 
-        Characters Madara = new Characters("Madara", 6, 500, 1, 7, 0, 1, 1, BuffList[0], Characters.MadaraRect, Characters.MadaraTexture, true);
+        Characters Madara = new Characters("Madara", 6, 500, 1, 3, 0, 1, 1, BuffList[0], Characters.MadaraRect, Characters.MadaraTexture, true);
         CharactersList.Add(Madara);
 
 
@@ -283,7 +282,7 @@ class Rewards
         //=============================================================================================================================================================================
 
 
-        Characters Saitama = new Characters("Saitama", 7, 500, 1, 0.1, 0, 1, 1, BuffList[0], Characters.SaitamaRect, Characters.SaitamaTexture, true);
+        Characters Saitama = new Characters("Saitama", 7, 500, 1, 1, 0, 1, 1, BuffList[0], Characters.SaitamaRect, Characters.SaitamaTexture, true);
         CharactersList.Add(Saitama);
 
 
@@ -328,7 +327,7 @@ class Rewards
         }
 
         //=============================================================================================================================================================================
-        // (ง •̀_•́)ง ||          ⚡YORUICHI🐈‍⬛      
+        // (ง •̀_•́)ง ||          Jotaro      
         //=============================================================================================================================================================================
 
         Characters Jotaro = new Characters("Jotaro", 6, 500, 1, 7, 0, 1, 1, BuffList[0], Characters.JotaroRect, Characters.JotaroTexture, true);
@@ -346,7 +345,7 @@ class Rewards
 
     
 
-    List<Characters> CharactersInShop = new List<Characters>(7);
+    public static List<Characters> CharactersInShop = new List<Characters>(7);
 
     public static double ShopResetTimer = 10;
     public void Shoplogic()
@@ -491,10 +490,11 @@ public class PowerUps
 public class Characters
 {
 
-
+    public static Vector2 AyanoPos = Store.Position1.Position;
+ 
     //Rectangles
     
-    public static Rectangle AyanokojiRect = new Rectangle(Store.Position1.Position, 250, 250);
+    public static Rectangle AyanokojiRect = new Rectangle(AyanoPos, 250, 250);
     public static Rectangle TojiRect = new Rectangle(Store.Position2.Position, 250, 250);
     public static Rectangle AkazaRect = new Rectangle(Store.Position3.Position, 250, 250);
     public static Rectangle YoruichiRect = new Rectangle(Store.Position4.Position, 250, 250);

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yoyoa\\OneDrive\\Documents\\Slutprojekt-Testing-lists\\Slutprojekt-Testing-lists\\Slutprojekt\\Slutprojekt.csproj": {}
+    "c:\\Users\\yoyoa\\OneDrive\\Documents\\Slutprojekt-Testing-lists\\Slutprojekt-Testing-lists\\Slutprojekt\\Slutprojekt.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yoyoa\\OneDrive\\Documents\\Slutprojekt-Testing-lists\\Slutprojekt-Testing-lists\\Slutprojekt\\Slutprojekt.csproj": {
+    "c:\\Users\\yoyoa\\OneDrive\\Documents\\Slutprojekt-Testing-lists\\Slutprojekt-Testing-lists\\Slutprojekt\\Slutprojekt.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yoyoa\\OneDrive\\Documents\\Slutprojekt-Testing-lists\\Slutprojekt-Testing-lists\\Slutprojekt\\Slutprojekt.csproj",
+        "projectUniqueName": "c:\\Users\\yoyoa\\OneDrive\\Documents\\Slutprojekt-Testing-lists\\Slutprojekt-Testing-lists\\Slutprojekt\\Slutprojekt.csproj",
         "projectName": "Slutprojekt",
-        "projectPath": "C:\\Users\\yoyoa\\OneDrive\\Documents\\Slutprojekt-Testing-lists\\Slutprojekt-Testing-lists\\Slutprojekt\\Slutprojekt.csproj",
+        "projectPath": "c:\\Users\\yoyoa\\OneDrive\\Documents\\Slutprojekt-Testing-lists\\Slutprojekt-Testing-lists\\Slutprojekt\\Slutprojekt.csproj",
         "packagesPath": "C:\\Users\\yoyoa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yoyoa\\OneDrive\\Documents\\Slutprojekt-Testing-lists\\Slutprojekt-Testing-lists\\Slutprojekt\\obj\\",
+        "outputPath": "c:\\Users\\yoyoa\\OneDrive\\Documents\\Slutprojekt-Testing-lists\\Slutprojekt-Testing-lists\\Slutprojekt\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\yoyoa\\AppData\\Roaming\\NuGet\\NuGet.Config"

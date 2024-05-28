@@ -128,19 +128,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\yoyoa\\.nuget\\packages\\": {}
+    "C:\\Users\\yousuf.assal\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\yoyoa\\OneDrive\\Documents\\Slutprojekt-Testing-lists\\Slutprojekt-Testing-lists\\Slutprojekt\\Slutprojekt.csproj",
+      "projectUniqueName": "C:\\Users\\yousuf.assal\\Documents\\spelutväckling\\slutproj2\\Home-pc-so-cool\\Slutprojekt.csproj",
       "projectName": "Slutprojekt",
-      "projectPath": "C:\\Users\\yoyoa\\OneDrive\\Documents\\Slutprojekt-Testing-lists\\Slutprojekt-Testing-lists\\Slutprojekt\\Slutprojekt.csproj",
-      "packagesPath": "C:\\Users\\yoyoa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\yoyoa\\OneDrive\\Documents\\Slutprojekt-Testing-lists\\Slutprojekt-Testing-lists\\Slutprojekt\\obj\\",
+      "projectPath": "C:\\Users\\yousuf.assal\\Documents\\spelutväckling\\slutproj2\\Home-pc-so-cool\\Slutprojekt.csproj",
+      "packagesPath": "C:\\Users\\yousuf.assal\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\yousuf.assal\\Documents\\spelutväckling\\slutproj2\\Home-pc-so-cool\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\yoyoa\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\yousuf.assal\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -158,11 +158,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -190,7 +185,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -11,9 +11,9 @@ public class Damage
 
     Vector2 mousePos = Raylib.GetMousePosition();
     public static float autodamagedelay = 1;
-    public static Font MinecraftFont = Raylib.LoadFont("Minecraft.ttf");
-    public static Font MinecrafterFont = Raylib.LoadFont("Minecrafter.Reg.ttf");
-    public static Font NeonGlowFont = Raylib.LoadFont("Neon Glow.ttf");
+    public static Font minecraftFont = Raylib.LoadFont("Minecraft.ttf");
+    public static Font minecrafterFont = Raylib.LoadFont("Minecrafter.Reg.ttf");
+    public static Font neonGlowFont = Raylib.LoadFont("Neon Glow.ttf");
 
 
     public void Hit()

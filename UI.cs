@@ -5,9 +5,10 @@ using System.Text.RegularExpressions;
 class UI
 {
 
-        Sound bgmusic = Raylib.LoadSound("Neverseemeagain.mp3");
-        public static Texture2D GameBackground = Raylib.LoadTexture(@"Gamebackground.png");
+        Sound bgMusic = Raylib.LoadSound("Neverseemeagain.mp3");
+        public static Texture2D gameBackground = Raylib.LoadTexture(@"Gamebackground.png");
 
+        //referance lines
         public void DrawLines()
         {
                 Raylib.DrawLine(10, 0, 10, 800, Color.Red);//side 1
@@ -15,19 +16,23 @@ class UI
                 Raylib.DrawLine(1270, 0, 1270, 800, Color.Red);//down 2
                 Raylib.DrawLine(870, 0, 870, 800, Color.Red);//down 1
         }
+
+
         public void Draw()
         {
-                Raylib.DrawTexture(GameBackground, 0, 0, Color.White);
+                //draw up games
+                Raylib.DrawTexture(gameBackground, 0, 0, Color.White);
 
 
-                Raylib.DrawTextEx(Damage.MinecrafterFont, "Points:", new Vector2(575, 230), 40, 5, Color.White);
-                Raylib.DrawTextEx(Damage.MinecraftFont, $"{Damage.points}", new Vector2(520, 270), 50, 5, Color.White);
+                Raylib.DrawTextEx(Damage.minecrafterFont, "Points:", new Vector2(575, 230), 40, 5, Color.White);
 
+                Raylib.DrawTextEx(Damage.minecraftFont, $"{Damage.points}", new Vector2(520, 270), 50, 5, Color.White);
+
+
+                Raylib.DrawTextEx(Damage.minecrafterFont, $"DPS {Player.autoDamage}", new Vector2(930, 50), 20, 5, Color.White);
+
+                Raylib.DrawTextEx(Damage.minecraftFont, $"Gems: {Damage.gems}", new Vector2(925, 105), 50, 5, Color.White);
                 //Raylib.DrawTextEx(Damage.MinecraftFont, $"{Rewards.ShopResetTimer}", new Vector2(100, 70), 50, 5, Color.White);
-
-                Raylib.DrawTextEx(Damage.MinecrafterFont, $"DPS {Player.autoDamage}", new Vector2(930, 50), 20, 5, Color.White);
-
-                Raylib.DrawTextEx(Damage.MinecraftFont, $"Gems: {Damage.gems}", new Vector2(925, 105), 50, 5, Color.White);
 
                 //hit cooldown bar
                 if (Player.autoDamage >= 1)
@@ -48,6 +53,7 @@ class UI
                  Raylib.DrawRectangle(800, 0, 800, 800, Color.DarkBrown);//right
 
                  //448 , 736*/
+                
 
         }
 
@@ -56,34 +62,34 @@ public class Store
 {
 
         //postition 
-        public static List<Rectangle> PositionsList = new List<Rectangle>();
+        public static List<Rectangle> positionsList = new List<Rectangle>();
 
 
-        public static Rectangle Position1 = new Rectangle(new Vector2(78, 128), new Vector2(250, 250));
-        public static Rectangle Position2 = new Rectangle(new Vector2(360, 128), new Vector2(250, 250));
-        public static Rectangle Position3 = new Rectangle(new Vector2(642, 128), new Vector2(250, 250));
-        public static Rectangle Position4 = new Rectangle(new Vector2(78, 420), new Vector2(250, 250));
-        public static Rectangle Position5 = new Rectangle(new Vector2(360, 420), new Vector2(250, 250));
-        public static Rectangle Position6 = new Rectangle(new Vector2(642, 420), new Vector2(250, 250));
-        public static Rectangle SpecialPosition = new Rectangle(new Vector2(924, 128), new Vector2(250, 550));
+        public static Rectangle position1 = new Rectangle(new Vector2(78, 128), new Vector2(250, 250));
+        public static Rectangle position2 = new Rectangle(new Vector2(360, 128), new Vector2(250, 250));
+        public static Rectangle position3 = new Rectangle(new Vector2(642, 128), new Vector2(250, 250));
+        public static Rectangle position4 = new Rectangle(new Vector2(78, 420), new Vector2(250, 250));
+        public static Rectangle position5 = new Rectangle(new Vector2(360, 420), new Vector2(250, 250));
+        public static Rectangle position6 = new Rectangle(new Vector2(642, 420), new Vector2(250, 250));
+        public static Rectangle specialPosition = new Rectangle(new Vector2(924, 128), new Vector2(250, 550));
 
         public void postitionDraw()
         {
-                PositionsList.Add(Position1);
-                PositionsList.Add(Position2);
-                PositionsList.Add(Position3);
-                PositionsList.Add(Position4);
-                PositionsList.Add(Position5);
-                PositionsList.Add(Position6);
-                PositionsList.Add(SpecialPosition);
+                positionsList.Add(position1);
+                positionsList.Add(position2);
+                positionsList.Add(position3);
+                positionsList.Add(position4);
+                positionsList.Add(position5);
+                positionsList.Add(position6);
+                positionsList.Add(specialPosition);
 
-                Raylib.DrawRectangleRec(Position1, Color.Black);
-                Raylib.DrawRectangleRec(Position2, Color.Black);
-                Raylib.DrawRectangleRec(Position3, Color.Black);
-                Raylib.DrawRectangleRec(Position4, Color.Black);
-                Raylib.DrawRectangleRec(Position5, Color.Black);
-                Raylib.DrawRectangleRec(Position6, Color.Black);
-                Raylib.DrawRectangleRec(SpecialPosition, Color.Black);
+                Raylib.DrawRectangleRec(position1, Color.Black);
+                Raylib.DrawRectangleRec(position2, Color.Black);
+                Raylib.DrawRectangleRec(position3, Color.Black);
+                Raylib.DrawRectangleRec(position4, Color.Black);
+                Raylib.DrawRectangleRec(position5, Color.Black);
+                Raylib.DrawRectangleRec(position6, Color.Black);
+                Raylib.DrawRectangleRec(specialPosition, Color.Black);
 
 
         }
@@ -103,50 +109,50 @@ public class Store
                 //----------
                 // Ayanokoji
                 //----------
-                Raylib.DrawRectangleRec(Characters.AyanokojiRect, Color.Brown);
-                Raylib.DrawTexture(Characters.AyanokojiTexture, (int)Characters.AyanokojiRect.X, (int)Characters.AyanokojiRect.Y, Color.White);
+                Raylib.DrawRectangleRec(Characters.ayanokojiRect, Color.Brown);
+                Raylib.DrawTexture(Characters.ayanokojiTexture, (int)Characters.ayanokojiRect.X, (int)Characters.ayanokojiRect.Y, Color.White);
 
                 //----------
                 // TOJI
                 //----------
-                Raylib.DrawRectangleRec(Characters.TojiRect, Color.Gray);
-                Raylib.DrawTexture(Characters.TojiTexture, (int)Characters.TojiRect.X, (int)Characters.TojiRect.Y, Color.White);
+                Raylib.DrawRectangleRec(Characters.tojiRect, Color.Gray);
+                Raylib.DrawTexture(Characters.tojiTexture, (int)Characters.tojiRect.X, (int)Characters.tojiRect.Y, Color.White);
 
                 //----------
                 // MADARA
                 //----------
 
-                Raylib.DrawRectangleRec(Characters.MadaraRect, Color.Red);
-                Raylib.DrawTexture(Characters.MadaraTexture, (int)Characters.MadaraRect.X, (int)Characters.MadaraRect.Y, Color.White);
+                Raylib.DrawRectangleRec(Characters.madaraRect, Color.Red);
+                Raylib.DrawTexture(Characters.madaraTexture, (int)Characters.madaraRect.X, (int)Characters.madaraRect.Y, Color.White);
 
                 //----------
                 // Saitama
                 //----------
 
-                Raylib.DrawRectangleRec(Characters.SaitamaRect, Color.Yellow);
-                Raylib.DrawTexture(Characters.SaitamaTexture, (int)Characters.SaitamaRect.X, (int)Characters.SaitamaRect.Y, Color.White);
+                Raylib.DrawRectangleRec(Characters.saitamaRect, Color.Yellow);
+                Raylib.DrawTexture(Characters.saitamaTexture, (int)Characters.saitamaRect.X, (int)Characters.saitamaRect.Y, Color.White);
 
 
                 //----------
                 // Akaza
                 //----------
 
-                Raylib.DrawRectangleRec(Characters.AkazaRect, Color.Blue);
-                Raylib.DrawTexture(Characters.AkazaTexture, (int)Characters.AkazaRect.X, (int)Characters.AkazaRect.Y, Color.White);
+                Raylib.DrawRectangleRec(Characters.akazaRect, Color.Blue);
+                Raylib.DrawTexture(Characters.akazaTexture, (int)Characters.akazaRect.X, (int)Characters.akazaRect.Y, Color.White);
 
                 //----------
                 // Yoruichi
                 //----------
 
-                Raylib.DrawRectangleRec(Characters.YoruichiRect, Color.DarkBrown);
-                Raylib.DrawTexture(Characters.YoruichiTexture, (int)Characters.YoruichiRect.X, (int)Characters.YoruichiRect.Y, Color.White);
+                Raylib.DrawRectangleRec(Characters.yoruichiRect, Color.DarkBrown);
+                Raylib.DrawTexture(Characters.yoruichiTexture, (int)Characters.yoruichiRect.X, (int)Characters.yoruichiRect.Y, Color.White);
 
                 //----------
                 // Jotaro
                 //----------
 
-                Raylib.DrawRectangleRec(Characters.JotaroRect, Color.DarkBrown);
-                Raylib.DrawTexture(Characters.JotaroTexture, (int)Characters.JotaroRect.X, (int)Characters.JotaroRect.Y, Color.White);
+                Raylib.DrawRectangleRec(Characters.jotaroRect, Color.DarkBrown);
+                Raylib.DrawTexture(Characters.jotaroTexture, (int)Characters.jotaroRect.X, (int)Characters.jotaroRect.Y, Color.White);
 
 
         }
@@ -159,37 +165,37 @@ public class Store
 
 
         //Rectangles
-        public static Rectangle Storebutton = new Rectangle(930, 730, 300, 50);
-        public static Rectangle Backbutton = new Rectangle(30, 720, 150, 50);
-        public static Rectangle Buybutton = new Rectangle(400, 720, 400, 50);
-        public static Rectangle ShopWindow = new Rectangle(40, 40, 1200, 720);
-        public static Rectangle Background = new Rectangle(0, 0, 1280, 800);
+        public static Rectangle storeButton = new Rectangle(930, 730, 300, 50);
+        public static Rectangle backButton = new Rectangle(30, 720, 150, 50);
+        public static Rectangle buyButton = new Rectangle(400, 720, 400, 50);
+        public static Rectangle shopWindow = new Rectangle(40, 40, 1200, 720);
+        public static Rectangle background = new Rectangle(0, 0, 1280, 800);
 
         //Textures
-        public static Texture2D Backbuttontexture = Raylib.LoadTexture(@"Backbuttontexture.png");
-        public static Texture2D Buybuttontexture = Raylib.LoadTexture(@"Buybuttontexture.png");
+        public static Texture2D backButtonTexture = Raylib.LoadTexture(@"Backbuttontexture.png");
+        public static Texture2D buyButtonTexture = Raylib.LoadTexture(@"Buybuttontexture.png");
 
 
-        public static Texture2D Shopbg = Raylib.LoadTexture(@"Shopbg.png");
-        public static Texture2D Shopbg2 = Raylib.LoadTexture(@"Shopbg2.png");
-        public static Texture2D Shopbg3 = Raylib.LoadTexture(@"Shopbg3.png");
-        public static Texture2D Shopovrly = Raylib.LoadTexture(@"shopovrly.png");
+        public static Texture2D shopBg = Raylib.LoadTexture(@"Shopbg.png");
+        public static Texture2D shopBkg2 = Raylib.LoadTexture(@"Shopbg2.png");
+        public static Texture2D shopBkg3 = Raylib.LoadTexture(@"Shopbg3.png");
+        public static Texture2D shopOvrly = Raylib.LoadTexture(@"shopovrly.png");
 
 
-        public static bool storebuttonispressed = false;
-        public static bool backbuttonispressed = false;
+        public static bool storeButtonIsPressed = false;
+        public static bool backButtonIsPressed = false;
 
-        public static int wishPrice = 200;
+        public static int wishPrice = 600;
 
         public Vector2 mousePos = Raylib.GetMousePosition();
 
 
-
+        //draw store ui
         public void Draw()
         {
 
-                Raylib.DrawTexture(Shopbg3, 0, 0, Color.White);
-                Raylib.DrawTexture(Shopovrly, 32, 32, Color.White);
+                Raylib.DrawTexture(shopBkg3, 0, 0, Color.White);
+                Raylib.DrawTexture(shopOvrly, 32, 32, Color.White);
                 Raylib.DrawText($"{Inventory.randomNumber}", 100, 100, 50, Color.Blue);
 
 
@@ -198,8 +204,8 @@ public class Store
                 //Raylib.DrawRectangleRec(Background, Color.DarkBrown);
                 //Raylib.DrawRectangleRec(ShopWindow, Color.Brown);
 
-                Raylib.DrawTextEx(Damage.MinecraftFont, $"{Damage.points}", new Vector2(880, 42), 50, 5, Color.White);
-                Raylib.DrawTextEx(Damage.MinecraftFont, $"{Damage.gems}", new Vector2(720, 42), 50, 5, Color.White);
+                Raylib.DrawTextEx(Damage.minecraftFont, $"{Damage.points}", new Vector2(880, 42), 50, 5, Color.White);
+                Raylib.DrawTextEx(Damage.minecraftFont, $"{Damage.gems}", new Vector2(720, 42), 50, 5, Color.White);
                 //Raylib.DrawTextEx(Damage.MinecraftFont, $"{Rewards.ShopResetTimer}", new Vector2(100, 70), 50, 5, Color.White);
 
 
@@ -207,41 +213,42 @@ public class Store
 
 
         }
+        //draws store buttons
         public void Drawstorebutton()
         {
 
-                Raylib.DrawRectangleRec(Storebutton, Color.Brown);
-                Raylib.DrawText("STORE", (int)Storebutton.X, (int)Storebutton.Y + 5, 40, Color.Black);
+                Raylib.DrawRectangleRec(storeButton, Color.Brown);
+                Raylib.DrawText("STORE", (int)storeButton.X, (int)storeButton.Y + 5, 40, Color.Black);
 
         }
         public void Drawbackbutton()
         {
-                Raylib.DrawRectangleRec(Backbutton, Color.Green);
-                Raylib.DrawTexture(Backbuttontexture, (int)Backbutton.X, (int)Backbutton.Y, Color.White);
+                Raylib.DrawRectangleRec(backButton, Color.Green);
+                Raylib.DrawTexture(backButtonTexture, (int)backButton.X, (int)backButton.Y, Color.White);
                 //Raylib.DrawText("BACK", (int)Backbutton.X, (int)Backbutton.Y + 5, 40, Color.Black);
 
 
         }
         public void DrawBuybutton()
         {
-                Raylib.DrawRectangleRec(Buybutton, Color.Brown);
-                Raylib.DrawTexture(Buybuttontexture, (int)Buybutton.X, (int)Buybutton.Y, Color.Blank);
-                Raylib.DrawText("BUY", (int)Buybutton.X, (int)Buybutton.Y + 5, 40, Color.Black);
+                Raylib.DrawRectangleRec(buyButton, Color.Brown);
+                Raylib.DrawTexture(buyButtonTexture, (int)buyButton.X, (int)buyButton.Y, Color.Blank);
+                Raylib.DrawText("BUY", (int)buyButton.X, (int)buyButton.Y + 5, 40, Color.Black);
 
         }
 
-
+        //button logic
         public void Button()
         {
 
-                if (Raylib.CheckCollisionPointRec(mousePos, Storebutton))
+                if (Raylib.CheckCollisionPointRec(mousePos, storeButton))
                 {
 
                         if (Raylib.IsMouseButtonPressed(MouseButton.Left))
                         {
 
-                                storebuttonispressed = true;
-                                backbuttonispressed = false;
+                                storeButtonIsPressed = true;
+                                backButtonIsPressed = false;
 
                         }
 
@@ -249,29 +256,29 @@ public class Store
 
                 }
 
-                if (Raylib.CheckCollisionPointRec(mousePos, Backbutton))
+                if (Raylib.CheckCollisionPointRec(mousePos, backButton))
                 {
                         if (Raylib.IsMouseButtonPressed(MouseButton.Left))
                         {
 
-                                backbuttonispressed = true;
+                                backButtonIsPressed = true;
 
-                                if (storebuttonispressed == true)
+                                if (storeButtonIsPressed == true)
                                 {
 
-                                        storebuttonispressed = false;
+                                        storeButtonIsPressed = false;
 
                                 }
-                                else if (Inventory.InventoryButtonispressed == true)
+                                else if (Inventory.inventoryButtonispressed == true)
                                 {
 
-                                        Inventory.InventoryButtonispressed = false;
+                                        Inventory.inventoryButtonispressed = false;
                                 }
 
                         }
                 }
 
-                if (Raylib.CheckCollisionPointRec(mousePos, Buybutton))
+                if (Raylib.CheckCollisionPointRec(mousePos, buyButton))
                 {
                         if (Raylib.IsMouseButtonPressed(MouseButton.Left))
                         {
@@ -281,6 +288,12 @@ public class Store
                                         Inventory.WishLogic();
 
 
+
+                                }
+                                else if (Damage.gems < wishPrice)
+                                {
+                                        
+                                        Raylib.DrawText("Not enough money", 300, 500 + 5, 40, Color.White);
 
                                 }
                         }
@@ -300,105 +313,191 @@ public class Inventory
 {
         Store store = new();
 
+        public static List<Rectangle> inventoryPositions = new List<Rectangle>();
+        public static Rectangle inventoryPos = new Rectangle(250 , 150, 200, 200);
+        public static Rectangle inventoryPos2 = new Rectangle(250 + 250, 150, 200, 200);
+        public static Rectangle inventoryPos3 = new Rectangle(250 + (250 * 2), 150, 200, 200);
+        public static Rectangle inventoryPos4 = new Rectangle(250 + (250 * 3)  , 150, 200, 200);
+        public static Rectangle inventoryPos5 = new Rectangle(250, 400, 200, 200);
+        public static Rectangle inventoryPos6 = new Rectangle(250+ (250), 400, 200, 200);
+        public static Rectangle inventoryPos7 = new Rectangle(250+ (250 * 2), 400, 200, 200);
+        public static Rectangle inventoryPos8 = new Rectangle(250+ (250 * 3), 400, 200, 200);
 
+        public static Rectangle inventoryButton = new Rectangle(265, 600, 400, 50);
+        public static Rectangle invBackButton = new Rectangle(30, 600, 150, 50);
+        public static Rectangle rollAgainButton = new Rectangle(1000, 600, 150, 50);
 
-        public static Rectangle InventoryButton = new Rectangle(265, 600, 400, 50);
-        public static Rectangle InvBackbutton = new Rectangle(30, 720, 150, 50);
-        public static bool InventoryButtonispressed = false;
+        public static bool rollAgainButtonIsPressed = false;
+
+        public static bool inventoryButtonispressed = false;
 
         public int inventorynum = 0;
 
+        //loads in inventory positions
+        public void LoadInventory()
+        {
+                inventoryPositions.Add(inventoryPos);
+                inventoryPositions.Add(inventoryPos2);
+                inventoryPositions.Add(inventoryPos3);
+                inventoryPositions.Add(inventoryPos4);
+                inventoryPositions.Add(inventoryPos5);
+                inventoryPositions.Add(inventoryPos6);
+                inventoryPositions.Add(inventoryPos7);
+                inventoryPositions.Add(inventoryPos8);
 
+        }
+
+        //draws the inventory 
         public void DrawInventory()
         {
+                Raylib.DrawTexture(Store.shopBkg2, 0, 0, Color.White);
 
-                Raylib.DrawTexture(Store.Shopbg2, 0, 0, Color.White);
 
-                foreach (Characters i in Player.Inventory)
+             
+
+                Raylib.DrawRectangleRec(inventoryPositions[0], Color.DarkBrown);
+                Raylib.DrawRectangleRec(inventoryPositions[1], Color.DarkBrown);
+                Raylib.DrawRectangleRec(inventoryPositions[2], Color.DarkBrown);
+                Raylib.DrawRectangleRec(inventoryPositions[3], Color.DarkBrown);
+                Raylib.DrawRectangleRec(inventoryPositions[4], Color.DarkBrown);
+                Raylib.DrawRectangleRec(inventoryPositions[5], Color.DarkBrown);
+                Raylib.DrawRectangleRec(inventoryPositions[6], Color.DarkBrown);
+                Raylib.DrawRectangleRec(inventoryPositions[7], Color.DarkBrown);
+                
+
+
+
+
+
+
+
+                /*foreach (Characters i in Player.Inventory)
                 {
 
 
+                        
 
-                        if (Player.Inventory.Count == inventorynum)
-                        {
-                                inventorynum++;
+                        Raylib.DrawRectangleRec(Player.Inventory[0].Rectangle, Color.White);
+                        Raylib.DrawTexture(Player.Inventory[0].Texture, (int)Player.Inventory[0].Rectangle.X, (int)Player.Inventory[0].Rectangle.Y, Color.White);
 
-                        }
+                        Raylib.DrawRectangleRec(Player.Inventory[1].Rectangle, Color.White);
+                        Raylib.DrawTexture(Player.Inventory[1].Texture, (int)Player.Inventory[1].Rectangle.X, (int)Player.Inventory[1].Rectangle.Y, Color.White);
 
-                        Raylib.DrawRectangleRec(Player.Inventory[inventorynum].Rectangle, Color.White);
-                        Raylib.DrawTexture(Player.Inventory[inventorynum].Texture, (int)Player.Inventory[inventorynum].Rectangle.X, (int)Player.Inventory[inventorynum].Rectangle.Y, Color.White);
+                        Raylib.DrawRectangleRec(Player.Inventory[2].Rectangle, Color.White);
+                        Raylib.DrawTexture(Player.Inventory[2].Texture, (int)Player.Inventory[2].Rectangle.X, (int)Player.Inventory[2].Rectangle.Y, Color.White);
+
+                        Raylib.DrawRectangleRec(Player.Inventory[3].Rectangle, Color.White);
+                        Raylib.DrawTexture(Player.Inventory[3].Texture, (int)Player.Inventory[3].Rectangle.X, (int)Player.Inventory[3].Rectangle.Y, Color.White);
+
+                        Raylib.DrawRectangleRec(Player.Inventory[4].Rectangle, Color.White);
+                        Raylib.DrawTexture(Player.Inventory[4].Texture, (int)Player.Inventory[4].Rectangle.X, (int)Player.Inventory[4].Rectangle.Y, Color.White);
 
 
 
-                }
+                       Player.Inventory[0].Rectangle = inventoryPositions[0];
+                       Player.Inventory[1].Rectangle = inventoryPositions[1];
+                       Player.Inventory[2].Rectangle = inventoryPositions[2];
+                       Player.Inventory[3].Rectangle = inventoryPositions[3];
+                }*/
 
 
 
 
         }
+
+        //draw inventory buttins
         public void DrawInventoryButton()
         {
-                Raylib.DrawRectangleRec(InventoryButton, Color.Brown);
-                Raylib.DrawText("Inventory", (int)InventoryButton.X, (int)InventoryButton.Y + 5, 40, Color.Black);
+                Raylib.DrawRectangleRec(inventoryButton, Color.Brown);
+                Raylib.DrawText("Inventory", (int)inventoryButton.X, (int)inventoryButton.Y + 5, 40, Color.Black);
                 //Raylib.DrawTexture(Buybuttontexture, (int)Buybutton.X, (int)Buybutton.Y, Color.Blank);
 
         }
         public void DrawInvbackbutton()
         {
-                Raylib.DrawRectangleRec(InvBackbutton, Color.Green);
-                Raylib.DrawTexture(Store.Backbuttontexture, (int)InvBackbutton.X, (int)InvBackbutton.Y, Color.White);
+                Raylib.DrawRectangleRec(invBackButton, Color.Green);
+                Raylib.DrawTexture(Store.backButtonTexture, (int)invBackButton.X, (int)invBackButton.Y, Color.White);
                 //Raylib.DrawText("BACK", (int)Backbutton.X, (int)Backbutton.Y + 5, 40, Color.Black);
 
 
         }
+        public void DrawRollAgainButton()
+        {
+                Raylib.DrawRectangleRec(rollAgainButton, Color.Green);
+                //Raylib.DrawTexture(Store.Backbuttontexture, (int)InvBackButton.X, (int)InvBackButton.Y, Color.White);
+                Raylib.DrawText("RollAgiain", (int)rollAgainButton.X, (int)rollAgainButton.Y + 5, 40, Color.Black);
 
+
+        }
+
+        //handels all the inventory button logic
         public void InventoryLogic()
         {
-                if (Raylib.CheckCollisionPointRec(store.mousePos, InventoryButton))
+                if (Raylib.CheckCollisionPointRec(store.mousePos, inventoryButton))
                 {
                         if (Raylib.IsMouseButtonPressed(MouseButton.Left))
                         {
 
-                                InventoryButtonispressed = true;
+                                inventoryButtonispressed = true;
 
-                                Store.backbuttonispressed = false;
+                                Store.backButtonIsPressed = false;
 
-                                Store.storebuttonispressed = false;
+                                Store.storeButtonIsPressed = false;
 
                         }
                 }
 
-                if (Raylib.CheckCollisionPointRec(store.mousePos, InvBackbutton))
+                if (Raylib.CheckCollisionPointRec(store.mousePos, invBackButton))
                 {
                         if (Raylib.IsMouseButtonPressed(MouseButton.Left))
                         {
 
-                                Store.backbuttonispressed = true;
+                                Store.backButtonIsPressed = true;
 
-                                if (Store.storebuttonispressed == true)
+                                if (Store.storeButtonIsPressed == true)
                                 {
 
-                                        Store.storebuttonispressed = false;
+                                        Store.storeButtonIsPressed = false;
 
                                 }
-                                else if (Inventory.InventoryButtonispressed == true)
+                                else if (inventoryButtonispressed == true)
                                 {
 
-                                        Inventory.InventoryButtonispressed = false;
+                                        inventoryButtonispressed = false;
                                 }
 
                         }
+                }
+
+                if (Raylib.CheckCollisionPointRec(store.mousePos, rollAgainButton))
+                {
+                        if (Raylib.IsMouseButtonPressed(MouseButton.Left))
+                        {
+                                if (Damage.gems >= Store.wishPrice)
+                                {
+
+                                        rollAgainButtonIsPressed = true;
+
+                                        WishLogic();
+
+
+
+                                }
+                        }
+
                 }
 
         }
         public static Random random = new Random();
         public static Rectangle RewardPos = new Rectangle(new Vector2(500, 500), new Vector2(250, 250));
 
-        public static Rectangle OriginalPos;
+        public static Rectangle originalPos;
         public static Characters rewardedCharacter;
         public static bool rewardClaimed = true;
         public static int randomNumber;
         public static float rewardTimer = 5;
+
+        //handels the buy system/logic
         public static void WishLogic()
         {
 
@@ -416,16 +515,16 @@ public class Inventory
                         randomNumber = random.Next(1, 100);
 
 
-                        if (randomNumber <= Rewards.CharactersInShop[1].Odds) // 50
+                        if (randomNumber <= Rewards.charactersInShop[1].Odds) // 50
                         {
 
-                                rewardedCharacter = Rewards.CharactersInShop[0];
+                                rewardedCharacter = Rewards.charactersInShop[0];
 
                         }
-                        else if (randomNumber >= Rewards.CharactersInShop[1].Odds + 1) //50
+                        else if (randomNumber >= Rewards.charactersInShop[1].Odds + 1) //50
                         {
 
-                                rewardedCharacter = Rewards.CharactersInShop[1];
+                                rewardedCharacter = Rewards.charactersInShop[1];
 
                         }
 
@@ -434,30 +533,30 @@ public class Inventory
 
                 else if (randomNumber <= 53 && randomNumber >= 51) //3
                 {
-                        rewardedCharacter = Rewards.CharactersInShop[2]; //Madara
+                        rewardedCharacter = Rewards.charactersInShop[2]; //Madara
                 }
 
                 else if (randomNumber == 54)//1
                 {
-                        rewardedCharacter = Rewards.CharactersInShop[3];
+                        rewardedCharacter = Rewards.charactersInShop[3];
 
                 }
 
                 else if (randomNumber <= 85 && randomNumber >= 55)//30
                 {
-                        rewardedCharacter = Rewards.CharactersInShop[4];
+                        rewardedCharacter = Rewards.charactersInShop[4];
 
                 }
 
                 else if (randomNumber <= 95 && randomNumber >= 86)//9
                 {
-                        rewardedCharacter = Rewards.CharactersInShop[5];
+                        rewardedCharacter = Rewards.charactersInShop[5];
 
                 }
 
                 else if (randomNumber <= 100 && randomNumber >= 96)//5
                 {
-                        rewardedCharacter = Rewards.CharactersInShop[6];
+                        rewardedCharacter = Rewards.charactersInShop[6];
                 }
 
 
@@ -470,10 +569,13 @@ public class Inventory
 
         }
 
-        public static void Update()
+        
+        /*public static void Update()
         {
                 rewardTimer -= Raylib.GetFrameTime();
-        }
+        }*/
+
+        //the logic for showing you the reward that you got 
         public static void DrawReward()
         {
 
@@ -481,16 +583,16 @@ public class Inventory
 
 
 
-                rewardTimer = 5;
+                //rewardTimer = 5;
 
 
-                OriginalPos = rewardedCharacter.Rectangle;
+                originalPos = inventoryPositions[0];
 
                 rewardedCharacter.Rectangle = RewardPos;
 
 
-                
-                if (rewardTimer >= 0)
+
+                if (rewardTimer >= 0 || rewardClaimed == false)
                 {
                         Raylib.DrawRectangle(0, 0, 1200, 800, Color.Brown);
                         Raylib.DrawRectangleRec(rewardedCharacter.Rectangle, Color.White);
@@ -499,20 +601,20 @@ public class Inventory
 
                 }
 
-                if (rewardTimer <= 0)
+                if (rewardTimer <= 0 || rewardClaimed == true)
                 {
-                        rewardClaimed = true;
+                        Player.inventory.Add(rewardedCharacter);
 
-                        Player.Inventory.Add(rewardedCharacter);
-
-                        rewardedCharacter.Rectangle = OriginalPos;
+                        rewardedCharacter.Rectangle = originalPos;
                 }
 
 
+                
 
 
-
-
+                Raylib.DrawTextEx(Damage.minecraftFont, $"{Damage.points}", new Vector2(880, 42), 50, 5, Color.White);
+                Raylib.DrawTextEx(Damage.minecraftFont, $"{Damage.gems}", new Vector2(720, 42), 50, 5, Color.White);
 
         }
 }
+ 

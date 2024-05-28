@@ -11,7 +11,6 @@ Damage damage = new Damage();
 Rewards rewards = new Rewards();
 Inventory inventory = new Inventory();
 
-
 int windowWidth = 1280;
 int windowHeight = 800;
 int fps = 60;
@@ -24,7 +23,7 @@ Raylib.SetTargetFPS(fps);
 Music music = Raylib.LoadMusicStream("Neverseemeagain.mp3");
 
 
-String scene = "shop";
+String scene = "start";
 
 Raylib.InitAudioDevice();
 
@@ -32,6 +31,7 @@ Raylib.PlayMusicStream(music);
 
 rewards.BuffsAdd();
 rewards.LoadCharacters();
+inventory.LoadInventory();
 
 
 while (!Raylib.WindowShouldClose())
@@ -56,7 +56,9 @@ while (!Raylib.WindowShouldClose())
     if (scene == "start")
     {
 
-        Raylib.ClearBackground(Color.Purple);
+        Raylib.ClearBackground(Color.Blue);
+
+        Raylib.DrawText("press space to start", 200, 400 ,40, Color.Black);
 
         if (Raylib.IsKeyPressed(KeyboardKey.Space))
         {
@@ -100,14 +102,14 @@ while (!Raylib.WindowShouldClose())
 
 
         //Store
-        if (Inventory.InventoryButtonispressed == true)
+        if (Inventory.inventoryButtonispressed == true)
         {
 
             scene = "inventory";
 
         }
 
-        if (Store.storebuttonispressed == true)
+        if (Store.storeButtonIsPressed == true)
         {
 
             scene = "shop";
@@ -129,17 +131,18 @@ while (!Raylib.WindowShouldClose())
         store.postitionDraw();
 
 
-        rewards.Shoplogic();
         store.DrawCharacters();
 
 
         store1.Button();
-        if(Inventory.rewardClaimed == false)
+        if (Inventory.rewardClaimed == false)
         {
             scene = "rewardcut";
+
+            
         }
 
-        if (Store.backbuttonispressed == true)
+        if (Store.backButtonIsPressed == true)
         {
 
             scene = "game";
@@ -150,24 +153,47 @@ while (!Raylib.WindowShouldClose())
     }
     else if (scene == "rewardcut")
     {
-        
-        Raylib.ClearBackground(Color.Purple);
+
+        Raylib.ClearBackground(Color.Blank);
 
         Store store1 = new();
+        Inventory inventory1 =new();
 
 
-        store1.Button();
+        Inventory.DrawReward();
+        inventory.DrawRollAgainButton();
 
-        while(Inventory.rewardClaimed == false)
+
+        inventory1.DrawInvbackbutton();
+        inventory1.InventoryLogic();
+                
+
+
+
+
+        if (Raylib.IsKeyPressed(KeyboardKey.Space))
         {
-            Inventory.Update();
-
-            if (Raylib.IsKeyPressed(KeyboardKey.Space))
-                {
-                        Inventory.rewardClaimed = true;
-                }
+            Inventory.rewardClaimed = true;
         }
 
+        if (Store.backButtonIsPressed == true)
+        {
+            Inventory.rewardClaimed = true;
+            scene = "game";
+
+        }
+
+        if (Inventory.rollAgainButtonIsPressed == true)
+        {
+            Inventory.rewardClaimed = false;
+
+            Inventory.rollAgainButtonIsPressed = false;
+
+        }
+        else
+        {
+            Inventory.rewardClaimed = true;
+        }
     }
     else if (scene == "inventory")
     {
@@ -178,7 +204,7 @@ while (!Raylib.WindowShouldClose())
 
         inventory1.InventoryLogic();
 
-        if (Store.backbuttonispressed == true)
+        if (Store.backButtonIsPressed == true)
         {
 
             scene = "game";
